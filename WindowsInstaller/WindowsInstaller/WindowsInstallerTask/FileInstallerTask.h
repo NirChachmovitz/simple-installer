@@ -11,6 +11,8 @@
 class FileInstallerTask : public ITask
 {
 public:
+	// TODO: add support for file already exists
+	// TODO: add constructor?
 	FileInstallerTask() = default;
 
 	void execute() override;
