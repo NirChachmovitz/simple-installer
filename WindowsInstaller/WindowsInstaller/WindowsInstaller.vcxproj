@@ -157,6 +157,8 @@
     <ClInclude Include="consts.h" />
     <ClInclude Include="error_codes.h" />
     <ClInclude Include="Utils\json.hpp" />
+    <ClInclude Include="WindowsInstallerTask\ITask.h" />
+    <ClInclude Include="WindowsInstallerTask\macros.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -29,5 +29,11 @@
     <ClInclude Include="Utils\json.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="WindowsInstallerTask\ITask.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WindowsInstallerTask\macros.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
