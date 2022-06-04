@@ -13,7 +13,7 @@ public:
 	std::vector<char> read(int number_of_bytes) override;
 	//void write(std::vector<char> buffer) override;
 	void copy(std::string target_path) override;
-	//void remove() override;
+	void remove() override;
 
 	int get_file_size();
 

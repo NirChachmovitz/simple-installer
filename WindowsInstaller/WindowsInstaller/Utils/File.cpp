@@ -25,6 +25,12 @@ void File::copy(std::string target_path)
 	win32_utils::copy_file(file_path, target_path, true);
 }
 
+
+void File::remove()
+{
+	win32_utils::delete_file(file_path);
+}
+
 File::~File()
 {
 	win32_utils::close_handle(file_handle);

@@ -2,6 +2,7 @@
 #include <Windows.h>
 
 #include "error_codes.h"
+#include "exceptions.h"
 #include "consts.h"
 #include "Utils/configuration_parse.h"
 #include "WindowsInstaller/WindowsInstaller.h"
@@ -27,6 +28,9 @@ int main(int argc, char* argv[], char* envp[])
 	}
 	catch (const nlohmann::json::exception& json_exception) {
 		std::cout << json_exception.what() << std::endl;
+	}
+	catch (const FileException&) {
+		// LOG FAILURE
 	}
 	return INSTALLATION_SUCCESS;
 }

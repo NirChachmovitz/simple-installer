@@ -29,7 +29,7 @@ WindowsInstaller::~WindowsInstaller()
 		while (!history.empty()) {
 			try {
 				auto current_task = history.top();
-				history.pop();
+				history.pop(); // TODO: think. is this throwing? or anything else here.
 				current_task->rollback();
 			} catch (...) {}
 		}
