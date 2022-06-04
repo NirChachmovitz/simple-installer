@@ -1,5 +1,6 @@
 #include "FileInstallerTask.h"
 
+#include "Utils/easylogging++.h"
 #include "Utils/File.h"
 #include "Utils/win32_utils.h"
 
@@ -10,6 +11,7 @@ FileInstallerTask::FileInstallerTask(const std::wstring& source_file_path, const
 
 void FileInstallerTask::execute()
 {
+	LOG(INFO) << "Executing a file installer task";
 	std::wstring file_name = source_file_path.substr(source_file_path.find_last_of(L"/\\") + 1);
 
 	std::wstring new_file_path = win32_utils::path_combine(target_directory_path, file_name); // TODO: maybe filesystem::path?
@@ -38,14 +40,16 @@ void FileInstallerTask::rollback()
 		std::wstring new_file_path = win32_utils::path_combine(target_directory_path, file_name);
 
 		if (previous_data.did_exist) {
+			LOG(INFO) << "FileInstallerTask: File already existed, recovering the previous data";
 			recover_previous_file(new_file_path);
 		}
 		else {
+			LOG(INFO) << "FileInstallerTask: File did not exist previously, wiping and deleting the file";
 			File target_file(new_file_path, GENERIC_ALL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL);
 			target_file.remove();
 		}
-	} catch (...) {
-		throw;
+	}
+	catch (...) {
 	}
 }
 

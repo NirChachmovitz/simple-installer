@@ -1,5 +1,6 @@
 #include "WindowsInstaller.h"
 
+#include "Utils/easylogging++.h"
 #include "Utils/win32_utils.h"
 #include "WindowsInstallerTask/TaskFactory.h"
 
@@ -12,9 +13,9 @@ void WindowsInstaller::install()
 	for (const auto& task : tasks) {
 		history.push(task);
 
-		// LOG
-
+		LOG(INFO) << "Executing task";
 		task->execute();
+		LOG(INFO) << "Executed task successfully";
 	}
 }
 
@@ -30,7 +31,10 @@ WindowsInstaller::~WindowsInstaller()
 			try {
 				auto current_task = history.top();
 				history.pop(); // TODO: think. is this throwing? or anything else here.
+
+				LOG(INFO) << "Rolling back task";
 				current_task->rollback();
+				LOG(INFO) << "Rolled back task successfully";
 			} catch (...) {}
 		}
 	}

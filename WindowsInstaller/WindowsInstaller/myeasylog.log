@@ -1,0 +1,61 @@
+2022-06-04 17:56:43,437 INFO [default] Parsing the configuration
+2022-06-04 17:56:43,442 INFO [default] Configuration parsed successfully
+2022-06-04 17:56:43,443 INFO [default] Starting Installation
+2022-06-04 17:56:43,443 INFO [default] Executing task
+2022-06-04 17:56:43,444 INFO [default] Executing a file installer task
+2022-06-04 17:56:43,502 INFO [default] Executed task successfully
+2022-06-04 17:56:43,565 INFO [default] Executing task
+2022-06-04 17:56:43,594 INFO [default] Executing a file installer task
+2022-06-04 17:56:43,658 INFO [default] Rolling back task
+2022-06-04 17:56:43,662 INFO [default] FileInstallerTask: File did not exist previously, wiping and deleting the file
+2022-06-04 17:56:43,666 INFO [default] Rolling back task
+2022-06-04 17:56:43,667 INFO [default] FileInstallerTask: File already existed, recovering the previous data
+2022-06-04 17:56:43,668 INFO [default] Rolled back task successfully
+2022-06-04 17:56:43,668 FATAL [default] py_file failed, last error is: 
+2022-06-04 17:56:43,669 WARNING [default] Aborting application. Reason: Fatal log at [C:\Users\Nir\Desktop\simple-windows-installer\WindowsInstaller\WindowsInstaller\main.cpp:44]
+2022-06-04 17:58:15,626 INFO [default] Parsing the configuration
+2022-06-04 17:58:15,631 INFO [default] Configuration parsed successfully
+2022-06-04 17:58:15,995 INFO [default] Starting Installation
+2022-06-04 17:58:16,048 INFO [default] Executing task
+2022-06-04 17:58:16,069 INFO [default] Executing a file installer task
+2022-06-04 17:58:16,312 INFO [default] Executed task successfully
+2022-06-04 17:58:16,333 INFO [default] Executing task
+2022-06-04 17:58:16,363 INFO [default] Executing a file installer task
+2022-06-04 17:58:16,779 INFO [default] Rolling back task
+2022-06-04 17:58:16,783 INFO [default] FileInstallerTask: File did not exist previously, wiping and deleting the file
+2022-06-04 17:58:16,859 INFO [default] Rolled back task successfully
+2022-06-04 17:58:16,865 INFO [default] Rolling back task
+2022-06-04 17:58:16,880 INFO [default] FileInstallerTask: File already existed, recovering the previous data
+2022-06-04 17:58:16,885 INFO [default] Rolled back task successfully
+2022-06-04 17:58:16,895 FATAL [default] py_file failed, last error is: 
+2022-06-04 17:58:16,923 WARNING [default] Aborting application. Reason: Fatal log at [C:\Users\Nir\Desktop\simple-windows-installer\WindowsInstaller\WindowsInstaller\main.cpp:44]
+2022-06-04 17:58:59,684 INFO [default] Parsing the configuration
+2022-06-04 17:58:59,689 INFO [default] Configuration parsed successfully
+2022-06-04 17:58:59,690 INFO [default] Starting Installation
+2022-06-04 17:58:59,691 INFO [default] Executing task
+2022-06-04 17:58:59,692 INFO [default] Executing a file installer task
+2022-06-04 17:58:59,727 INFO [default] Executed task successfully
+2022-06-04 17:58:59,728 INFO [default] Executing task
+2022-06-04 17:58:59,729 INFO [default] Executing a file installer task
+2022-06-04 17:58:59,781 INFO [default] Rolling back task
+2022-06-04 17:58:59,781 INFO [default] FileInstallerTask: File did not exist previously, wiping and deleting the file
+2022-06-04 17:58:59,785 INFO [default] Rolled back task successfully
+2022-06-04 17:58:59,785 INFO [default] Rolling back task
+2022-06-04 17:58:59,786 INFO [default] FileInstallerTask: File already existed, recovering the previous data
+2022-06-04 17:58:59,787 INFO [default] Rolled back task successfully
+2022-06-04 17:58:59,788 FATAL [default] py_file failed, last error is: 
+2022-06-04 17:58:59,789 WARNING [default] Aborting application. Reason: Fatal log at [C:\Users\Nir\Desktop\simple-windows-installer\WindowsInstaller\WindowsInstaller\main.cpp:44]
+2022-06-04 18:00:00,986 INFO [default] Parsing the configuration
+2022-06-04 18:00:00,994 INFO [default] Configuration parsed successfully
+2022-06-04 18:00:00,995 INFO [default] Starting Installation
+2022-06-04 18:00:00,995 INFO [default] Executing task
+2022-06-04 18:00:00,996 INFO [default] Executing a file installer task
+2022-06-04 18:00:01,030 INFO [default] Executed task successfully
+2022-06-04 18:00:01,030 INFO [default] Executing task
+2022-06-04 18:00:01,032 INFO [default] Executing a file installer task
+2022-06-04 18:00:05,971 INFO [default] Rolling back task
+2022-06-04 18:00:06,833 INFO [default] FileInstallerTask: File did not exist previously, wiping and deleting the file
+2022-06-04 18:00:08,053 INFO [default] Rolled back task successfully
+2022-06-04 18:00:15,647 INFO [default] Rolling back task
+2022-06-04 18:00:20,030 INFO [default] FileInstallerTask: File already existed, recovering the previous data
+2022-06-04 18:00:29,761 INFO [default] Rolled back task successfully

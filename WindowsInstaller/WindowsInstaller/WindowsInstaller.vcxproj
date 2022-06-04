@@ -161,6 +161,7 @@
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Utils\configuration_parse.cpp" />
+    <ClCompile Include="Utils\easylogging++.cc" />
     <ClCompile Include="Utils\File.cpp" />
     <ClCompile Include="Utils\win32_utils.cpp" />
     <ClCompile Include="WindowsInstallerTask\FileInstallerTask.cpp" />
@@ -172,6 +173,7 @@
     <ClInclude Include="error_codes.h" />
     <ClInclude Include="exceptions.h" />
     <ClInclude Include="Utils\configuration_parse.h" />
+    <ClInclude Include="Utils\easylogging++.h" />
     <ClInclude Include="Utils\File.h" />
     <ClInclude Include="Utils\IFile.h" />
     <ClInclude Include="Utils\json.hpp" />
