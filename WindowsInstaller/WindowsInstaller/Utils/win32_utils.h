@@ -15,7 +15,7 @@ namespace win32_utils
 
 	void copy_file(const std::wstring& file_path, const std::wstring& target_directory, bool fail_if_exists);
 
-	std::vector<char> read_file(HANDLE file_handle, uint32_t number_of_bytes_to_read);
+	std::vector<std::byte> read_file(HANDLE file_handle, uint32_t number_of_bytes_to_read);
 
 	void delete_file(const std::wstring& file_path);
 

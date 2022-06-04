@@ -13,7 +13,7 @@ int File::get_file_size()
 }
 
 
-std::vector<char> File::read(int number_of_bytes)
+std::vector<std::byte> File::read(int number_of_bytes)
 {
 	return win32_utils::read_file(file_handle, number_of_bytes);
 }

@@ -35,9 +35,9 @@ void win32_utils::copy_file(const std::wstring& file_path, const std::wstring& t
 	}
 }
 
-std::vector<char> win32_utils::read_file(HANDLE file_handle, uint32_t number_of_bytes_to_read)
+std::vector<std::byte> win32_utils::read_file(HANDLE file_handle, uint32_t number_of_bytes_to_read)
 {
-	std::vector<char> buffer(number_of_bytes_to_read);
+	std::vector<std::byte> buffer(number_of_bytes_to_read);
 	DWORD number_of_bytes_read;
 
 	if (!ReadFile(file_handle, buffer.data(), number_of_bytes_to_read, &number_of_bytes_read, nullptr)) {
