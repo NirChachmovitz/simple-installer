@@ -25,11 +25,8 @@ int win32_utils::get_file_size(HANDLE file_handle)
 }
 
 
-void win32_utils::copy_file(const std::wstring& file_path, const std::wstring& target_directory, bool fail_if_exists)
+void win32_utils::copy_file(const std::wstring& file_path, const std::wstring& new_file_path, bool fail_if_exists)
 {
-	std::wstring file_name = file_path.substr(file_path.find_last_of(L"/\\") + 1);
-	std::wstring new_file_path = path_combine(target_directory, file_name); // TODO: maybe filesystem::path?
-
 	if (!CopyFileW(file_path.data(), new_file_path.data(), fail_if_exists)) {
 		throw CopyFileException("copy_file failed, last error is: " + GetLastError());
 	}
@@ -47,6 +44,15 @@ std::vector<std::byte> win32_utils::read_file(HANDLE file_handle, uint32_t numbe
 	// TODO: remove copying
 	return buffer;
 }
+
+void win32_utils::write_file(HANDLE file_handle, std::vector<std::byte> buffer)
+{
+	DWORD number_of_bytes_written;
+	if (!WriteFile(file_handle, buffer.data(), buffer.size(), &number_of_bytes_written, nullptr)) {
+		throw WriteFileException("write_file failed, last error is: " + GetLastError());
+	}
+}
+
 
 void win32_utils::delete_file(const std::wstring& file_path)
 {

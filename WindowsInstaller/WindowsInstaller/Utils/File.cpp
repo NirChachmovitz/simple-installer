@@ -19,10 +19,24 @@ std::vector<std::byte> File::read(int number_of_bytes)
 }
 
 
-void File::copy(std::wstring target_path)
+std::vector<std::byte> File::read_entire_file()
 {
-	// TODO: handle the case where we overwrite existing file
-	win32_utils::copy_file(file_path, target_path, true);
+	int file_size = get_file_size();
+
+	return read(file_size);
+}
+
+
+void File::write(std::vector<std::byte> buffer)
+{
+	win32_utils::write_file(file_handle, buffer);
+}
+
+
+
+void File::copy(std::wstring new_file_path)
+{
+	win32_utils::copy_file(file_path, new_file_path, false);
 }
 
 

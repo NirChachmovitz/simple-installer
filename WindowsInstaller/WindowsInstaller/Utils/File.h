@@ -11,13 +11,14 @@ public:
 		uint32_t flags_and_attributes);
 
 	std::vector<std::byte> read(int number_of_bytes) override;
-	//void write(std::vector<char> buffer) override;
-	void copy(std::wstring target_path) override;
+	void write(std::vector<std::byte> buffer) override;
+	void copy(std::wstring new_file_path) override;
 	void remove() override;
 
 	int get_file_size();
+	std::vector<std::byte> read_entire_file();
 
-	~File();
+	~File() override;
 private:
 	std::wstring file_path;
 	HANDLE file_handle;

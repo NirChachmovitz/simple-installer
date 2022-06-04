@@ -9,7 +9,9 @@ nlohmann::json configuration_parse::parse_configuration(const std::wstring& conf
 
 	int file_size = configuration_file.get_file_size();
 
-	auto file_content = configuration_file.read(file_size);*/
+	auto file_content = configuration_file.read(file_size);
+
+	nlohmann::json configuration(file_content);*/
 
 	std::ifstream json_input(configuration_path);
 

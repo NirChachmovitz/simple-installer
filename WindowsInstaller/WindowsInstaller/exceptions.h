@@ -18,6 +18,7 @@ DEFINE_EXCEPTION(CreateFileException, FileException);
 DEFINE_EXCEPTION(GetFileSizeException, FileException);
 DEFINE_EXCEPTION(CopyFileException, FileException);
 DEFINE_EXCEPTION(ReadFileException, FileException);
+DEFINE_EXCEPTION(WriteFileException, FileException);
 DEFINE_EXCEPTION(DeleteFileException, FileException);
 DEFINE_EXCEPTION(PathCombineException, FileException);
 DEFINE_EXCEPTION(CloseHandleException, FileException);

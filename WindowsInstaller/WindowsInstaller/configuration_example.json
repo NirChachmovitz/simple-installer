@@ -4,12 +4,12 @@
     {
       "type": "FileInstallerTask",
       "source_file_path": "C:\\Users\\Nir\\Desktop\\fileone.txt",
-      "target_directory_path": "C:\\mydirectory"
+      "target_directory_path": "C:\\Users\\Nir\\Desktop\\mydirectory"
     },
     {
       "type": "FileInstallerTask",
-      "source_file_path": "C:\\Users\\Nir\\Desktop\\filetwo.txt",
-      "target_directory_path": "C:\\mydirectory"
+      "source_file_path": "C:\\Users\\Nir\\Desktop\\filetwo2.txt",
+      "target_directory_path": "C:\\Users\\Nir\\Desktop\\mydirectory"
     }
   ]
 }
