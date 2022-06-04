@@ -3,7 +3,7 @@
 
 #include <memory>
 #include "ITask.h"
-#include "Utils/json.hpp"
+#include "Configuration/json.hpp"
 
 /**
  * A factory for creating a specified task, according to the json file.

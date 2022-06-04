@@ -160,29 +160,28 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Utils\configuration_parse.cpp" />
-    <ClCompile Include="Utils\easylogging++.cc" />
-    <ClCompile Include="Utils\File.cpp" />
-    <ClCompile Include="Utils\win32_utils.cpp" />
-    <ClCompile Include="WindowsInstallerTask\FileInstallerTask.cpp" />
-    <ClCompile Include="WindowsInstallerTask\TaskFactory.cpp" />
-    <ClCompile Include="WindowsInstaller\WindowsInstaller.cpp" />
+    <ClCompile Include="Configuration\configuration_parse.cpp" />
+    <ClCompile Include="Logger\easylogging++.cc" />
+    <ClCompile Include="Utilities\File.cpp" />
+    <ClCompile Include="Utilities\win32_utils.cpp" />
+    <ClCompile Include="InstallerTask\FileInstallerTask.cpp" />
+    <ClCompile Include="InstallerTask\TaskFactory.cpp" />
+    <ClCompile Include="Installer\Installer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="consts.h" />
     <ClInclude Include="error_codes.h" />
     <ClInclude Include="exceptions.h" />
-    <ClInclude Include="Utils\configuration_parse.h" />
-    <ClInclude Include="Utils\easylogging++.h" />
-    <ClInclude Include="Utils\File.h" />
-    <ClInclude Include="Utils\IFile.h" />
-    <ClInclude Include="Utils\json.hpp" />
-    <ClInclude Include="Utils\win32_utils.h" />
-    <ClInclude Include="WindowsInstallerTask\FileInstallerTask.h" />
-    <ClInclude Include="WindowsInstallerTask\ITask.h" />
+    <ClInclude Include="Configuration\configuration_parse.h" />
+    <ClInclude Include="Logger\easylogging++.h" />
+    <ClInclude Include="Utilities\File.h" />
+    <ClInclude Include="Configuration\json.hpp" />
+    <ClInclude Include="Utilities\win32_utils.h" />
+    <ClInclude Include="InstallerTask\FileInstallerTask.h" />
+    <ClInclude Include="InstallerTask\ITask.h" />
     <ClInclude Include="macros.h" />
-    <ClInclude Include="WindowsInstallerTask\TaskFactory.h" />
-    <ClInclude Include="WindowsInstaller\WindowsInstaller.h" />
+    <ClInclude Include="InstallerTask\TaskFactory.h" />
+    <ClInclude Include="Installer\Installer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

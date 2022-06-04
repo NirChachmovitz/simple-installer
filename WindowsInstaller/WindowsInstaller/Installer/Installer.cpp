@@ -1,13 +1,13 @@
-#include "WindowsInstaller.h"
+#include "Installer.h"
 
-#include "Utils/easylogging++.h"
-#include "Utils/win32_utils.h"
-#include "WindowsInstallerTask/TaskFactory.h"
+#include "Logger/easylogging++.h"
+#include "Utilities/win32_utils.h"
+#include "InstallerTask/TaskFactory.h"
 
-WindowsInstaller::WindowsInstaller() : is_committed(false)
+Installer::Installer() : is_committed(false)
 {}
 
-void WindowsInstaller::install()
+void Installer::install()
 {
 	// If thrown, main will destruct Installer
 	for (const auto& task : tasks) {
@@ -19,17 +19,17 @@ void WindowsInstaller::install()
 	}
 }
 
-void WindowsInstaller::commit()
+void Installer::commit()
 {
 	is_committed = true;
 }
 
-WindowsInstaller::~WindowsInstaller()
+Installer::~Installer()
 {
 	if (!is_committed) {
 		while (!history.empty()) {
 			try {
-				auto current_task = history.top();
+				const auto current_task = history.top();
 				history.pop(); // TODO: think. is this throwing? or anything else here.
 
 				LOG(INFO) << "Rolling back task";
@@ -41,7 +41,7 @@ WindowsInstaller::~WindowsInstaller()
 }
 
 
-void from_json(const nlohmann::json& j, WindowsInstaller& installer)
+void from_json(const nlohmann::json& j, Installer& installer)
 {
 	installer.tasks = j.at("tasks").get<std::vector<std::shared_ptr<ITask>>>();
 }

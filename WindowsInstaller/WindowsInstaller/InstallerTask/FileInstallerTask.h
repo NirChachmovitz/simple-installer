@@ -4,7 +4,7 @@
 #include <string>
 #include <vector>
 #include <memory>
-#include "Utils/json.hpp"
+#include "Configuration/json.hpp"
 #include "ITask.h"
 
 // A struct to keep the previous data of the file if it exists already.

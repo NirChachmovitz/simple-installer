@@ -1,9 +1,10 @@
 #include "FileInstallerTask.h"
 
 #include "consts.h"
-#include "Utils/easylogging++.h"
-#include "Utils/File.h"
-#include "Utils/win32_utils.h"
+#include "Configuration/json.hpp"
+#include "Logger/easylogging++.h"
+#include "Utilities/File.h"
+#include "Utilities/win32_utils.h"
 
 FileInstallerTask::FileInstallerTask(const std::wstring& source_file_path, const std::wstring& target_directory_path)
 	: source_file_path(source_file_path), target_directory_path(target_directory_path), previous_data({false, {}})

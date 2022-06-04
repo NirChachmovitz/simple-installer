@@ -2,9 +2,10 @@
 
 
 #include <Windows.h>
-#include "IFile.h"
+#include <string>
+#include <vector>
 
-class File : public IFile
+class File
 {
 public:
 
@@ -21,26 +22,26 @@ public:
 	 * @param[in] number_of_bytes - number of bytes to be read from the file
 	 * @returns vector of bytes with the data
 	 */
-	std::vector<std::byte> read(uint32_t number_of_bytes) const override;
+	std::vector<std::byte> read(uint32_t number_of_bytes) const;
 	std::vector<std::byte> read_entire_file() const;
 
 	/**
 	 * @param[in] buffer - the buffer to be written to the file from the beginning
 	 */
-	void write(std::vector<std::byte> buffer) override;
+	void write(std::vector<std::byte> buffer);
 
 	/**
 	 * @param[in] new_file_path - the place to which copy the file
 	 */
-	void copy(std::wstring new_file_path) override;
+	void copy(std::wstring new_file_path);
 
 	// Wiping and deleting the file, so nothing remains...
-	void remove() override;
+	void remove();
 	void wipe();
 
 	int get_file_size() const;
 
-	~File() override;
+	~File();
 private:
 	std::wstring file_path;
 	HANDLE file_handle;

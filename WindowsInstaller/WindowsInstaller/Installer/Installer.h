@@ -5,26 +5,26 @@
 #include <memory>
 #include <stack>
 
-#include "Utils/json.hpp"
-#include "WindowsInstallerTask/ITask.h"
+#include "Configuration/json.hpp"
+#include "InstallerTask/ITask.h"
 
 /**
  * Represents the RAII Windows Installer!
  */
-class WindowsInstaller
+class Installer
 {
 public:
 
-	WindowsInstaller();
+	Installer();
 
 	// A destructor meant to execute the rollback for each of the tasks which mistakenly occoured.
-	~WindowsInstaller();
+	~Installer();
 
 	void install();
 
 	void commit();
 
-	friend void from_json(const nlohmann::json& j, WindowsInstaller& installer);
+	friend void from_json(const nlohmann::json& j, Installer& installer);
 
 private:
 	// Tasks to be executed

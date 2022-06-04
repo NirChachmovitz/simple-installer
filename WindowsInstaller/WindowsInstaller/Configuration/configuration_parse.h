@@ -2,7 +2,8 @@
 
 
 #include <string>
-#include "Utils/json.hpp"
+
+#include "json.hpp"
 
 /**
  * Meant to parse the json configuration and create it given its path

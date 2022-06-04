@@ -1,12 +1,12 @@
-#include <iostream>
 #include <Windows.h>
 
 #include "error_codes.h"
 #include "exceptions.h"
 #include "consts.h"
-#include "Utils/configuration_parse.h"
-#include "Utils/easylogging++.h"
-#include "WindowsInstaller/WindowsInstaller.h"
+#include "Configuration/configuration_parse.h"
+#include "Configuration/json.hpp"
+#include "Logger/easylogging++.h"
+#include "Installer/Installer.h"
 
 INITIALIZE_EASYLOGGINGPP
 
@@ -29,7 +29,7 @@ int wmain(int argc, wchar_t* argv[], wchar_t* envp[])
 		auto configuration = configuration_parse::parse_configuration(configuration_file_path.data());
 		LOG(INFO) << "Configuration parsed successfully";
 
-		auto installer = configuration.get<WindowsInstaller>();
+		auto installer = configuration.get<Installer>();
 
 		LOG(INFO) << "Starting Installation";
 		installer.install();
