@@ -1,7 +1,6 @@
 #include "configuration_parse.h"
 
-#include "File.h"
-#include <fstream> // TODO: REMOVE IT!
+#include <fstream> // TODO: try and do it without
 
 nlohmann::json configuration_parse::parse_configuration(const std::wstring& configuration_path)
 {

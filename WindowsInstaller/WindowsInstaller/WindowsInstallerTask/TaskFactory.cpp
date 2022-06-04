@@ -1,17 +1,15 @@
 #include "TaskFactory.h"
 
 #include "FileInstallerTask.h"
+#include "consts.h"
 
 // TODO: refactor!
-void from_json(const nlohmann::json& j, std::shared_ptr<ITask>& task)
+void from_json(const nlohmann::json& json_configuration, std::shared_ptr<ITask>& task)
 {
-	auto type = j.at("type").get<std::string>();
-	//j.erase(j.find("type"));
+	auto type = json_configuration.at(TYPE_KEY).get<std::string>();
 	if ("FileInstallerTask" == type)
 	{
-		//auto file_copy_task = j.get<FileCopyTask>();
-		//task = std::make_unique<FileCopyTask>(file_copy_task);
-		task = j.get<std::shared_ptr<FileInstallerTask>>();
+		task = json_configuration.get<std::shared_ptr<FileInstallerTask>>();
 	}
 
 }

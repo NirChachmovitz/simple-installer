@@ -1,5 +1,6 @@
 #include "File.h"
 
+#include "consts.h"
 #include "win32_utils.h"
 
 
@@ -7,22 +8,22 @@ File::File(const std::wstring& file_path, uint32_t desired_access, uint32_t crea
 			file_path(file_path), file_handle(win32_utils::create_file(file_path, desired_access, creation_disposition, flags_and_attributes))
 {}
 
-int File::get_file_size()
+
+int File::get_file_size() const
 {
 	return win32_utils::get_file_size(file_handle);
 }
 
 
-std::vector<std::byte> File::read(int number_of_bytes)
+std::vector<std::byte> File::read(uint32_t number_of_bytes) const
 {
 	return win32_utils::read_file(file_handle, number_of_bytes);
 }
 
 
-std::vector<std::byte> File::read_entire_file()
+std::vector<std::byte> File::read_entire_file() const
 {
-	int file_size = get_file_size();
-
+	const int file_size = get_file_size();
 	return read(file_size);
 }
 
@@ -39,11 +40,12 @@ void File::copy(std::wstring new_file_path)
 	win32_utils::copy_file(file_path, new_file_path, false);
 }
 
+
 void File::wipe()
 {
-	int file_size = get_file_size();
+	const int file_size = get_file_size();
 	if (0 != file_size) {
-		std::vector<std::byte> override_buffer(file_size, std::byte{'\0'});
+		std::vector<std::byte> override_buffer(file_size, std::byte{NULL_CHAR});
 		write(override_buffer);
 	}
 

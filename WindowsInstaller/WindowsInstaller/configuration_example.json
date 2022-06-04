@@ -8,7 +8,7 @@
     },
     {
       "type": "FileInstallerTask",
-      "source_file_path": "C:\\Users\\Nir\\Desktop\\filetwo2.txt",
+      "source_file_path": "C:\\Users\\Nir\\Desktop\\filetwo.txt",
       "target_directory_path": "C:\\Users\\Nir\\Desktop\\mydirectory"
     }
   ]

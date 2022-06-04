@@ -59,3 +59,58 @@
 2022-06-04 18:00:15,647 INFO [default] Rolling back task
 2022-06-04 18:00:20,030 INFO [default] FileInstallerTask: File already existed, recovering the previous data
 2022-06-04 18:00:29,761 INFO [default] Rolled back task successfully
+2022-06-04 18:19:29,156 INFO [default] Parsing the configuration
+2022-06-04 18:19:29,161 INFO [default] Configuration parsed successfully
+2022-06-04 18:19:29,162 INFO [default] Starting Installation
+2022-06-04 18:19:29,163 INFO [default] Executing task
+2022-06-04 18:19:29,163 INFO [default] Executing a file installer task
+2022-06-04 18:19:29,188 INFO [default] Executed task successfully
+2022-06-04 18:19:29,188 INFO [default] Executing task
+2022-06-04 18:19:29,188 INFO [default] Executing a file installer task
+2022-06-04 18:19:29,194 INFO [default] Rolling back task
+2022-06-04 18:19:29,194 INFO [default] FileInstallerTask: File did not exist previously, wiping and deleting the file
+2022-06-04 18:19:29,196 INFO [default] Rolled back task successfully
+2022-06-04 18:19:29,197 INFO [default] Rolling back task
+2022-06-04 18:19:29,197 INFO [default] FileInstallerTask: File already existed, recovering the previous data
+2022-06-04 18:19:29,198 INFO [default] Rolled back task successfully
+2022-06-04 18:19:29,199 FATAL [default] py_file failed, last error is: 
+2022-06-04 18:19:29,199 WARNING [default] Aborting application. Reason: Fatal log at [C:\Users\Nir\Desktop\simple-windows-installer\WindowsInstaller\WindowsInstaller\main.cpp:46]
+2022-06-04 18:19:41,317 INFO [default] Parsing the configuration
+2022-06-04 18:19:41,322 INFO [default] Configuration parsed successfully
+2022-06-04 18:19:41,322 INFO [default] Starting Installation
+2022-06-04 18:19:41,323 INFO [default] Executing task
+2022-06-04 18:19:41,323 INFO [default] Executing a file installer task
+2022-06-04 18:19:41,348 INFO [default] Executed task successfully
+2022-06-04 18:19:41,349 INFO [default] Executing task
+2022-06-04 18:19:41,349 INFO [default] Executing a file installer task
+2022-06-04 18:19:41,352 INFO [default] Executed task successfully
+2022-06-04 18:19:41,353 INFO [default] Installed Successfully
+2022-06-04 18:19:41,353 INFO [default] Commiting changes
+2022-06-04 18:19:41,354 INFO [default] Committed Successfully
+2022-06-04 18:19:41,354 INFO [default] Finished Running Successfully
+2022-06-04 18:25:17,857 INFO [default] Parsing the configuration
+2022-06-04 18:25:17,862 INFO [default] Configuration parsed successfully
+2022-06-04 18:25:17,863 INFO [default] Starting Installation
+2022-06-04 18:25:17,863 INFO [default] Executing task
+2022-06-04 18:25:17,864 INFO [default] Executing a file installer task
+2022-06-04 18:25:17,899 INFO [default] Executed task successfully
+2022-06-04 18:25:17,901 INFO [default] Executing task
+2022-06-04 18:25:17,901 INFO [default] Executing a file installer task
+2022-06-04 18:25:17,902 INFO [default] Executed task successfully
+2022-06-04 18:25:17,902 INFO [default] Installed Successfully
+2022-06-04 18:25:17,903 INFO [default] Commiting changes
+2022-06-04 18:25:17,903 INFO [default] Committed Successfully
+2022-06-04 18:25:17,904 INFO [default] Finished Running Successfully
+2022-06-04 18:58:46,809 INFO [default] Parsing the configuration
+2022-06-04 18:58:46,816 INFO [default] Configuration parsed successfully
+2022-06-04 18:58:46,817 INFO [default] Starting Installation
+2022-06-04 18:58:46,817 INFO [default] Executing task
+2022-06-04 18:58:46,817 INFO [default] Executing a file installer task
+2022-06-04 18:58:46,849 INFO [default] Executed task successfully
+2022-06-04 18:58:46,850 INFO [default] Executing task
+2022-06-04 18:58:46,851 INFO [default] Executing a file installer task
+2022-06-04 18:58:46,852 INFO [default] Executed task successfully
+2022-06-04 18:58:46,852 INFO [default] Installed Successfully
+2022-06-04 18:58:46,852 INFO [default] Commiting changes
+2022-06-04 18:58:46,853 INFO [default] Committed Successfully
+2022-06-04 18:58:46,853 INFO [default] Finished Running Successfully

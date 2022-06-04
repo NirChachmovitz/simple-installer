@@ -1,14 +1,12 @@
 #pragma once
 
 
-#include <memory>
-
 #include "macros.h"
-#include "Utils/json.hpp"
 
 /**
  * A class for defining a general task to do.
- * Supplies two pure functions to be overriden : execute & rollback.
+ * Supplies two pure methods to be overriden : execute & rollback.
+ * Each method will be documented in the implemented classes.
  */
 class ITask
 {

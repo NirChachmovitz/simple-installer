@@ -16,10 +16,12 @@ INITIALIZE_EASYLOGGINGPP
 int wmain(int argc, wchar_t* argv[], wchar_t* envp[])
 {
 	UNREFERENCED_PARAMETER(envp);
+
 	if (VALID_NUMBER_OF_ARGUMENTS != argc) {
 		LOG(FATAL) << "Invalid number of arguments was given";
 		return INVALID_NUMBER_OF_ARGUMENTS;
 	}
+
 	try {
 
 		LOG(INFO) << "Parsing the configuration";

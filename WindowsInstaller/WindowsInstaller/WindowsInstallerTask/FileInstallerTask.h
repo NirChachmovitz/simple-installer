@@ -2,9 +2,13 @@
 
 
 #include <string>
+#include <vector>
+#include <memory>
+#include "Utils/json.hpp"
 #include "ITask.h"
 
-// A struct to keep the previous data of the file if it exists already, so the rollback will be perfect.
+// A struct to keep the previous data of the file if it exists already.
+// Using it, the rollback will be perfect.
 struct PreviousData
 {
 	bool did_exist;
@@ -18,18 +22,20 @@ struct PreviousData
 class FileInstallerTask : public ITask
 {
 public:
-	// TODO: add support for file already exists
-	// TODO: add constructor?
-	FileInstallerTask() = default;
 	FileInstallerTask(const std::wstring& source_file_path, const std::wstring& target_directory_path);
 
+	// Executing of the installation: Copying the file to a target directory.
 	void execute() override;
+
+	// Rolling-back the installation: Returning to the previous state
+	// (previous file OR deleting the existing, depending on the previous state)
 	void rollback() override;
 
-	friend void from_json(const nlohmann::json& j, std::shared_ptr<FileInstallerTask>& task);
+	friend void from_json(const nlohmann::json& json_configuration, std::shared_ptr<FileInstallerTask>& task);
 
 private:
-	void recover_previous_file(const std::wstring& new_file_path);
+	// In case the file already existed before the installation, this method will recover its data
+	void recover_previous_file(const std::wstring& new_file_path) const;
 
 	std::wstring source_file_path;
 	std::wstring target_directory_path;
