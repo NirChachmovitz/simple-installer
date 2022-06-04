@@ -160,6 +160,7 @@
     <ClCompile Include="Utils\File.cpp" />
     <ClCompile Include="Utils\win32_utils.cpp" />
     <ClCompile Include="WindowsInstallerTask\FileInstallerTask.cpp" />
+    <ClCompile Include="WindowsInstallerTask\TaskFactory.cpp" />
     <ClCompile Include="WindowsInstaller\WindowsInstaller.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -174,6 +175,7 @@
     <ClInclude Include="WindowsInstallerTask\FileInstallerTask.h" />
     <ClInclude Include="WindowsInstallerTask\ITask.h" />
     <ClInclude Include="macros.h" />
+    <ClInclude Include="WindowsInstallerTask\TaskFactory.h" />
     <ClInclude Include="WindowsInstaller\WindowsInstaller.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

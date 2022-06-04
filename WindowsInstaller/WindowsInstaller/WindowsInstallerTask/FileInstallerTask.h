@@ -18,6 +18,8 @@ public:
 	void execute() override;
 	void rollback() override;
 
+	friend void from_json(const nlohmann::json& j, std::unique_ptr<FileInstallerTask>& task);
+
 private:
 	std::wstring source_file_path;
 	std::wstring target_directory_path;

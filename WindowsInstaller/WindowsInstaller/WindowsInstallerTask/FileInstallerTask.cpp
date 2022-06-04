@@ -24,3 +24,11 @@ void FileInstallerTask::rollback()
 	}
 }
 
+// TODO: refactor
+void from_json(const nlohmann::json& j, std::unique_ptr<FileInstallerTask>& task)
+{
+	task = std::make_unique<FileInstallerTask>();
+	task->source_file_path = j.at("file_path").get<std::wstring>();
+	task->target_directory_path = j.at("target_directory").get<std::wstring>();
+}
+
