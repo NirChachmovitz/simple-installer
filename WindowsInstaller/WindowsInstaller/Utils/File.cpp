@@ -39,9 +39,20 @@ void File::copy(std::wstring new_file_path)
 	win32_utils::copy_file(file_path, new_file_path, false);
 }
 
+void File::wipe()
+{
+	int file_size = get_file_size();
+	if (0 != file_size) {
+		std::vector<std::byte> override_buffer(file_size, std::byte{'\0'});
+		write(override_buffer);
+	}
+
+}
+
 
 void File::remove()
 {
+	wipe();
 	win32_utils::delete_file(file_path);
 }
 

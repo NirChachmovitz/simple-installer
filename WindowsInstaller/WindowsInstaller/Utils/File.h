@@ -17,6 +17,7 @@ public:
 
 	int get_file_size();
 	std::vector<std::byte> read_entire_file();
+	void wipe();
 
 	~File() override;
 private:

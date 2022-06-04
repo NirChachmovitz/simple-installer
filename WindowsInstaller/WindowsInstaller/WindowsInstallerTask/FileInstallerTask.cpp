@@ -41,7 +41,8 @@ void FileInstallerTask::rollback()
 			recover_previous_file(new_file_path);
 		}
 		else {
-			win32_utils::delete_file(new_file_path);
+			File target_file(new_file_path, GENERIC_ALL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL);
+			target_file.remove();
 		}
 	} catch (...) {
 		throw;
