@@ -58,6 +58,7 @@ void File::remove()
 	win32_utils::delete_file(file_path);
 }
 
+
 File::~File()
 {
 	win32_utils::close_handle(file_handle);

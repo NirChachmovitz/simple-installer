@@ -5,7 +5,7 @@
 
 constexpr int VALID_NUMBER_OF_ARGUMENTS = 2;
 
-const char NULL_CHAR = '\0';
+constexpr char NULL_CHAR = '\0';
 
 constexpr std::string_view TYPE_KEY = "type";
 constexpr std::string_view SOURCE_FILE_PATH_KEY = "source_file_path";

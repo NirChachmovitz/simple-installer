@@ -23,9 +23,10 @@ int wmain(int argc, wchar_t* argv[], wchar_t* envp[])
 	}
 
 	try {
+		const std::wstring_view configuration_file_path(argv[1]);
 
 		LOG(INFO) << "Parsing the configuration";
-		auto configuration = configuration_parse::parse_configuration(argv[1]);
+		auto configuration = configuration_parse::parse_configuration(configuration_file_path.data());
 		LOG(INFO) << "Configuration parsed successfully";
 
 		auto installer = configuration.get<WindowsInstaller>();

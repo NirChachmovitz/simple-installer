@@ -20,7 +20,7 @@ void FileInstallerTask::execute()
 	try {
 		File target_file(new_file_path, GENERIC_ALL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL);
 
-		// File Exists:
+		// File Exists, so treat it accordingly and update the previous data structure
 		previous_data.did_exist = true;
 		previous_data.data = target_file.read_entire_file();
 
@@ -29,9 +29,6 @@ void FileInstallerTask::execute()
 	}
 
 	win32_utils::copy_file(source_file_path, new_file_path, false);
-
-	// Log here
-
 }
 
 void FileInstallerTask::rollback()
@@ -50,8 +47,7 @@ void FileInstallerTask::rollback()
 			target_file.remove();
 		}
 	}
-	catch (...) {
-	}
+	catch (...) {}
 }
 
 void FileInstallerTask::recover_previous_file(const std::wstring& new_file_path) const
