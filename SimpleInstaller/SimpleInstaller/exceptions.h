@@ -29,3 +29,4 @@ DEFINE_EXCEPTION(CloseHandleException, FileException);
 DEFINE_EXCEPTION(RegistryException, Win32UtilsException);
 DEFINE_EXCEPTION(RegCreateKeyException, RegistryException);
 DEFINE_EXCEPTION(RegistryKeyAlreadyExistsException, RegistryException);
+DEFINE_EXCEPTION(RegCloseKeyException, RegistryException);

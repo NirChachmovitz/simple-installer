@@ -78,4 +78,16 @@ namespace win32_utils
 	 */
 	HKEY create_registry_key(HKEY key, std::wstring sub_key, uint32_t option);
 
+	/**
+	 * @brief queries the registry value
+	 * @param[in] key - the key to be queried
+	 */
+	std::vector<std::byte> query_registry_value(HKEY key);
+
+	/**
+	 * @brief closes the registry key
+	 * @param[in] key - registry key
+	 */
+	void close_registry_key(HKEY key);
+
 }

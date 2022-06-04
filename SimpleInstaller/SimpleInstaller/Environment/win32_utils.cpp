@@ -91,7 +91,24 @@ HKEY win32_utils::create_registry_key(HKEY key, std::wstring sub_key, uint32_t o
 		throw RegCreateKeyException("get_registry_key failed, last error is: " + GetLastError());
 	}
 	/*if (REG_OPENED_EXISTING_KEY == disposition) { // TODO: catch it and do wonders
-		throw RegistryKeyAlreadyExistsException();
+		throw RegistryKeyAlreadyExistsException(); // TODO: maybe only get value
 	}*/
 	return result;
 }
+
+
+void win32_utils::close_registry_key(HKEY key)
+{
+	if (ERROR_SUCCESS != RegCloseKey(key)) {
+		throw RegCloseKeyException("close_registry_key failed, last error is: " + GetLastError());
+	}
+}
+
+
+std::vector<std::byte> win32_utils::query_registry_value(HKEY key)
+{
+	/*std::vector<std::byte> data;
+	DWORD data_size;
+	if (ERROR_SUCCESS != RegQueryValueExW(key, nullptr, nullptr, nullptr, data.data(), data_size))*/
+}
+&

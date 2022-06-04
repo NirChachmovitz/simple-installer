@@ -9,6 +9,7 @@
 // A RAII class for guarding a registry key
 class RegistryKey
 {
+public:
 	RegistryKey(HKEY key, std::wstring sub_key, uint32_t option);
 
 	~RegistryKey();
@@ -16,4 +17,7 @@ class RegistryKey
 	std::vector<std::byte> read() const;
 
 	void write(std::vector<std::byte>);
+
+private:
+	HKEY key;
 };
