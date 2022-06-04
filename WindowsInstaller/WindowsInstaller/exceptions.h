@@ -15,5 +15,7 @@ DEFINE_EXCEPTION(WindowsInstallerException, std::runtime_error);
 DEFINE_EXCEPTION(Win32UtilsException, WindowsInstallerException);
 DEFINE_EXCEPTION(FileException, Win32UtilsException);
 DEFINE_EXCEPTION(CreateFileException, FileException);
+DEFINE_EXCEPTION(GetFileSizeException, FileException);
 DEFINE_EXCEPTION(CopyFileException, FileException);
+DEFINE_EXCEPTION(ReadFileException, FileException);
 DEFINE_EXCEPTION(CloseHandleException, FileException);

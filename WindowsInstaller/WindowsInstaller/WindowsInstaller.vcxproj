@@ -156,14 +156,17 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Utils\configuration_parse.cpp" />
     <ClCompile Include="Utils\File.cpp" />
     <ClCompile Include="Utils\win32_utils.cpp" />
     <ClCompile Include="WindowsInstallerTask\FileInstallerTask.cpp" />
+    <ClCompile Include="WindowsInstaller\WindowsInstaller.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="consts.h" />
     <ClInclude Include="error_codes.h" />
     <ClInclude Include="exceptions.h" />
+    <ClInclude Include="Utils\configuration_parse.h" />
     <ClInclude Include="Utils\File.h" />
     <ClInclude Include="Utils\IFile.h" />
     <ClInclude Include="Utils\json.hpp" />
@@ -171,6 +174,7 @@
     <ClInclude Include="WindowsInstallerTask\FileInstallerTask.h" />
     <ClInclude Include="WindowsInstallerTask\ITask.h" />
     <ClInclude Include="macros.h" />
+    <ClInclude Include="WindowsInstaller\WindowsInstaller.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

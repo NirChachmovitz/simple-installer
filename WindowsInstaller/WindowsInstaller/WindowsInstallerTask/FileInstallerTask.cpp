@@ -14,3 +14,13 @@ void FileInstallerTask::execute()
 		throw;
 	}
 }
+
+void FileInstallerTask::rollback()
+{
+	try {
+		
+	} catch (...) {
+		throw;
+	}
+}
+

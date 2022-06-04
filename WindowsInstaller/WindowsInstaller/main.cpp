@@ -1,5 +1,6 @@
 #include "error_codes.h"
 #include "consts.h"
+#include "Utils/configuration_parse.h"
 
 
 /**
@@ -12,7 +13,7 @@ int wmain(int argc, wchar_t* argv[], wchar_t* envp[])
 		return INVALID_NUMBER_OF_ARGUMENTS;
 	}
 	try {
-		
+		auto configuration = configuration_parse::parse_configuration(argv[1]);
 	}
 	catch (...) {
 		
