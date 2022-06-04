@@ -3,7 +3,7 @@
 #include "File.h"
 #include <fstream> // TODO: REMOVE IT!
 
-nlohmann::json configuration_parse::parse_configuration(const std::string& configuration_path)
+nlohmann::json configuration_parse::parse_configuration(const std::wstring& configuration_path)
 {
 	/*File configuration_file(configuration_path, GENERIC_ALL, OPEN_ALWAYS, FILE_ATTRIBUTE_NORMAL);
 

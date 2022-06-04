@@ -14,6 +14,7 @@ public:
 	// TODO: add support for file already exists
 	// TODO: add constructor?
 	FileInstallerTask() = default;
+	FileInstallerTask(std::wstring source_file_path, std::wstring target_directory_path);
 
 	void execute() override;
 	void rollback() override;
@@ -22,6 +23,6 @@ public:
 
 private:
 	// TODO: make wstring. according to the manual of nlohmann, wstring is not supported.
-	std::string source_file_path;
-	std::string target_directory_path;
+	std::wstring source_file_path;
+	std::wstring target_directory_path;
 };
