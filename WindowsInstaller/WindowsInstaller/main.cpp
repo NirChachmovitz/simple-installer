@@ -21,6 +21,9 @@ int main(int argc, char* argv[], char* envp[])
 
 		auto installer = configuration.get<WindowsInstaller>();
 
+		installer.install();
+
+		installer.commit();
 	}
 	catch (const nlohmann::json::exception& json_exception) {
 		std::cout << json_exception.what() << std::endl;

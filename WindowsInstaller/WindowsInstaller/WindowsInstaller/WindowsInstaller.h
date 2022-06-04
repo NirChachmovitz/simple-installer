@@ -12,11 +12,16 @@ class WindowsInstaller
 {
 public:
 	WindowsInstaller();
+	~WindowsInstaller();
+
+	void install();
+
+	void commit();
 
 	friend void from_json(const nlohmann::json& j, WindowsInstaller& installer);
 
 private:
-	std::vector<std::unique_ptr<ITask>> tasks;
+	std::vector<std::shared_ptr<ITask>> tasks;
 	bool is_committed;
-	std::stack<std::unique_ptr<ITask>> history;
+	std::stack<std::shared_ptr<ITask>> history;
 };

@@ -18,7 +18,7 @@ public:
 	void execute() override;
 	void rollback() override;
 
-	friend void from_json(const nlohmann::json& j, std::unique_ptr<FileInstallerTask>& task);
+	friend void from_json(const nlohmann::json& j, std::shared_ptr<FileInstallerTask>& task);
 
 private:
 	// TODO: make wstring. according to the manual of nlohmann, wstring is not supported.

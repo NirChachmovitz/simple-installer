@@ -5,4 +5,4 @@
 #include "Utils/json.hpp"
 #include <memory>
 
-void from_json(const nlohmann::json& j, std::unique_ptr<ITask>& task);
+void from_json(const nlohmann::json& j, std::shared_ptr<ITask>& task);
