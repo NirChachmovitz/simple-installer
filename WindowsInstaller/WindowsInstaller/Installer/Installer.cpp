@@ -7,6 +7,13 @@
 Installer::Installer() : is_committed(false)
 {}
 
+
+void Installer::commit()
+{
+	is_committed = true;
+}
+
+
 void Installer::install()
 {
 	// If thrown, main will destruct Installer
@@ -17,14 +24,13 @@ void Installer::install()
 		task->execute();
 		LOG(INFO) << "Executed task successfully";
 	}
+
+	// Reaching here meaning great success!
+	commit();
 }
 
-void Installer::commit()
-{
-	is_committed = true;
-}
 
-Installer::~Installer()
+void Installer::rollback()
 {
 	if (!is_committed) {
 		while (!history.empty()) {
@@ -35,9 +41,16 @@ Installer::~Installer()
 				LOG(INFO) << "Rolling back task";
 				current_task->rollback();
 				LOG(INFO) << "Rolled back task successfully";
-			} catch (...) {}
+			}
+			catch (...) {}
 		}
 	}
+}
+
+
+Installer::~Installer()
+{
+	rollback();
 }
 
 

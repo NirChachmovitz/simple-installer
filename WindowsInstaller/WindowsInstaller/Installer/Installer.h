@@ -22,11 +22,13 @@ public:
 
 	void install();
 
-	void commit();
+	void rollback();
 
 	friend void from_json(const nlohmann::json& j, Installer& installer);
 
 private:
+	void commit();
+
 	// Tasks to be executed
 	std::vector<std::shared_ptr<ITask>> tasks;
 
