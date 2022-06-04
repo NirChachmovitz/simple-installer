@@ -5,6 +5,7 @@
 #include <string>
 #include <vector>
 
+// A RAII class for guarding a file
 class File
 {
 public:

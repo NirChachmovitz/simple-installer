@@ -80,3 +80,18 @@ void win32_utils::close_handle(HANDLE file_handle)
 		throw CloseHandleException("close_handle failed, last error is: " + GetLastError());
 	}
 }
+
+
+HKEY win32_utils::create_registry_key(HKEY key, std::wstring sub_key, uint32_t option)
+{
+	HKEY result;
+	DWORD disposition;
+	if (ERROR_SUCCESS != RegCreateKeyExW(key, sub_key.data(), 0, nullptr, REG_OPTION_NON_VOLATILE, KEY_ALL_ACCESS,
+											nullptr, &result, &disposition)) {
+		throw RegCreateKeyException("get_registry_key failed, last error is: " + GetLastError());
+	}
+	/*if (REG_OPENED_EXISTING_KEY == disposition) { // TODO: catch it and do wonders
+		throw RegistryKeyAlreadyExistsException();
+	}*/
+	return result;
+}

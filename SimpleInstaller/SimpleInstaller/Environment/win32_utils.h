@@ -69,4 +69,13 @@ namespace win32_utils
 	 */
 	void close_handle(HANDLE file_handle);
 
+	/**
+	 * @brief creates or opens a specified registry key
+	 * @param[in] key - A handle to an open registry key.
+	 * @param[in] sub_key - name of the subkey to be opened or created
+	 * @param[in] option - options to open the registry key
+	 * @returns the desired key
+	 */
+	HKEY create_registry_key(HKEY key, std::wstring sub_key, uint32_t option);
+
 }

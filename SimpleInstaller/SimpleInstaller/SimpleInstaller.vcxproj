@@ -161,12 +161,14 @@
   <ItemGroup>
     <ClCompile Include="Configuration\configuration_parse.cpp" />
     <ClCompile Include="InstallerTask\FileInstallerTask.cpp" />
+    <ClCompile Include="InstallerTask\RegistryInstallerTask.cpp" />
     <ClCompile Include="InstallerTask\TaskFactory.cpp" />
     <ClCompile Include="Installer\Installer.cpp" />
     <ClCompile Include="Logger\easylogging++.cc" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Utilities\File.cpp" />
     <ClCompile Include="Environment\win32_utils.cpp" />
+    <ClCompile Include="Utilities\RegistryKey.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Configuration\configuration_parse.h" />
@@ -176,12 +178,14 @@
     <ClInclude Include="exceptions.h" />
     <ClInclude Include="InstallerTask\FileInstallerTask.h" />
     <ClInclude Include="InstallerTask\ITask.h" />
+    <ClInclude Include="InstallerTask\RegistryInstallerTask.h" />
     <ClInclude Include="InstallerTask\TaskFactory.h" />
     <ClInclude Include="Installer\Installer.h" />
     <ClInclude Include="Logger\easylogging++.h" />
     <ClInclude Include="macros.h" />
     <ClInclude Include="Utilities\File.h" />
     <ClInclude Include="Environment\win32_utils.h" />
+    <ClInclude Include="Utilities\RegistryKey.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="configuration_example.json" />
