@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{d1b2a451-1d17-4634-b8db-0b8a9cbd06ca}</ProjectGuid>
-    <RootNamespace>WindowsInstaller</RootNamespace>
+    <ProjectGuid>{b7d19996-1b04-4128-a83c-6654864126c8}</ProjectGuid>
+    <RootNamespace>SimpleInstaller</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -90,8 +90,8 @@
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <TreatWarningAsError>true</TreatWarningAsError>
-      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <AdditionalIncludeDirectories>$(ProjectDir)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -109,8 +109,8 @@
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <TreatWarningAsError>true</TreatWarningAsError>
-      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <AdditionalIncludeDirectories>$(ProjectDir)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -128,8 +128,8 @@
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <TreatWarningAsError>true</TreatWarningAsError>
-      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <AdditionalIncludeDirectories>$(ProjectDir)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -147,8 +147,8 @@
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <TreatWarningAsError>true</TreatWarningAsError>
-      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <AdditionalIncludeDirectories>$(ProjectDir)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -159,29 +159,32 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp" />
     <ClCompile Include="Configuration\configuration_parse.cpp" />
-    <ClCompile Include="Logger\easylogging++.cc" />
-    <ClCompile Include="Utilities\File.cpp" />
-    <ClCompile Include="Utilities\win32_utils.cpp" />
     <ClCompile Include="InstallerTask\FileInstallerTask.cpp" />
     <ClCompile Include="InstallerTask\TaskFactory.cpp" />
     <ClCompile Include="Installer\Installer.cpp" />
+    <ClCompile Include="Logger\easylogging++.cc" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Utilities\File.cpp" />
+    <ClCompile Include="Environment\win32_utils.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Configuration\configuration_parse.h" />
+    <ClInclude Include="Configuration\json.hpp" />
     <ClInclude Include="consts.h" />
     <ClInclude Include="error_codes.h" />
     <ClInclude Include="exceptions.h" />
-    <ClInclude Include="Configuration\configuration_parse.h" />
-    <ClInclude Include="Logger\easylogging++.h" />
-    <ClInclude Include="Utilities\File.h" />
-    <ClInclude Include="Configuration\json.hpp" />
-    <ClInclude Include="Utilities\win32_utils.h" />
     <ClInclude Include="InstallerTask\FileInstallerTask.h" />
     <ClInclude Include="InstallerTask\ITask.h" />
-    <ClInclude Include="macros.h" />
     <ClInclude Include="InstallerTask\TaskFactory.h" />
     <ClInclude Include="Installer\Installer.h" />
+    <ClInclude Include="Logger\easylogging++.h" />
+    <ClInclude Include="macros.h" />
+    <ClInclude Include="Utilities\File.h" />
+    <ClInclude Include="Environment\win32_utils.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="configuration_example.json" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

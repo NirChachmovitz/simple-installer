@@ -1,7 +1,7 @@
 #include "File.h"
 
 #include "consts.h"
-#include "win32_utils.h"
+#include "Environment/win32_utils.h"
 
 
 File::File(const std::wstring& file_path, uint32_t desired_access, uint32_t creation_disposition, uint32_t flags_and_attributes) :
@@ -28,20 +28,20 @@ std::vector<std::byte> File::read_entire_file() const
 }
 
 
-void File::write(std::vector<std::byte> buffer)
+void File::write(std::vector<std::byte> buffer) const
 {
 	win32_utils::write_file(file_handle, buffer);
 }
 
 
 
-void File::copy(std::wstring new_file_path)
+void File::copy(std::wstring new_file_path) const
 {
 	win32_utils::copy_file(file_path, new_file_path, false);
 }
 
 
-void File::wipe()
+void File::wipe() const
 {
 	const int file_size = get_file_size();
 	if (0 != file_size) {

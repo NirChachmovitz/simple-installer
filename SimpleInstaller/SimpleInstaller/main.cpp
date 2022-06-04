@@ -34,10 +34,6 @@ int wmain(int argc, wchar_t* argv[], wchar_t* envp[])
 		LOG(INFO) << "Starting Installation";
 		installer.install();
 		LOG(INFO) << "Installed Successfully";
-
-		LOG(INFO) << "Commiting changes";
-		installer.commit();
-		LOG(INFO) << "Committed Successfully";
 	}
 	catch (const nlohmann::json::exception& json_exception) {
 		LOG(FATAL) << "Failed to process the json configuration, " << json_exception.what();

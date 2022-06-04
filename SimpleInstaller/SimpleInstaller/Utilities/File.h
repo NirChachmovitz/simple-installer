@@ -28,16 +28,16 @@ public:
 	/**
 	 * @param[in] buffer - the buffer to be written to the file from the beginning
 	 */
-	void write(std::vector<std::byte> buffer);
+	void write(std::vector<std::byte> buffer) const;
 
 	/**
 	 * @param[in] new_file_path - the place to which copy the file
 	 */
-	void copy(std::wstring new_file_path);
+	void copy(std::wstring new_file_path) const;
 
 	// Wiping and deleting the file, so nothing remains...
 	void remove();
-	void wipe();
+	void wipe() const;
 
 	int get_file_size() const;
 

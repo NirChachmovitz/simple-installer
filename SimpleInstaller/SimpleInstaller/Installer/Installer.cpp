@@ -1,7 +1,7 @@
 #include "Installer.h"
 
 #include "Logger/easylogging++.h"
-#include "Utilities/win32_utils.h"
+#include "Environment/win32_utils.h"
 #include "InstallerTask/TaskFactory.h"
 
 Installer::Installer() : is_committed(false)
