@@ -1,3 +1,4 @@
+#include <iostream>
 #include <Windows.h>
 
 #include "error_codes.h"
@@ -9,7 +10,7 @@
 /**
  * @argv[1] - Path of the configuration file
  */
-int wmain(int argc, wchar_t* argv[], wchar_t* envp[])
+int main(int argc, char* argv[], char* envp[])
 {
 	UNREFERENCED_PARAMETER(envp);
 	if (VALID_NUMBER_OF_ARGUMENTS != argc) {
@@ -19,9 +20,10 @@ int wmain(int argc, wchar_t* argv[], wchar_t* envp[])
 		auto configuration = configuration_parse::parse_configuration(argv[1]);
 
 		auto installer = configuration.get<WindowsInstaller>();
+
 	}
-	catch (...) {
-		
+	catch (const nlohmann::json::exception& json_exception) {
+		std::cout << json_exception.what() << std::endl;
 	}
 	return INSTALLATION_SUCCESS;
 }

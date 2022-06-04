@@ -6,5 +6,5 @@
 
 namespace configuration_parse
 {
-	nlohmann::json parse_configuration(const std::wstring& configuration_path);
+	nlohmann::json parse_configuration(const std::string& configuration_path);
 }

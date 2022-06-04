@@ -7,18 +7,18 @@
 class File : public IFile
 {
 public:
-	File(const std::wstring& file_path, uint32_t desired_access, uint32_t creation_disposition, 
+	File(const std::string& file_path, uint32_t desired_access, uint32_t creation_disposition, 
 		uint32_t flags_and_attributes);
 
-	std::vector<std::byte> read(int number_of_bytes) override;
-	//void write(std::vector<std::byte> buffer) override;
-	void copy(std::wstring target_path) override;
+	std::vector<char> read(int number_of_bytes) override;
+	//void write(std::vector<char> buffer) override;
+	void copy(std::string target_path) override;
 	//void remove() override;
 
 	int get_file_size();
 
 	~File();
 private:
-	std::wstring file_path;
+	std::string file_path;
 	HANDLE file_handle;
 };

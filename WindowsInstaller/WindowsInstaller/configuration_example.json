@@ -1,0 +1,15 @@
+{
+  "tasks": 
+  [
+    {
+      "type": "FileInstallerTask",
+      "source_file_path": "C:\\",
+      "target_directory_path": "C:\\directory"
+    },
+    {
+      "type": "FileInstallerTask",
+      "source_file_path": "C:\\file.txt",
+      "target_directory_path": "C:\\hi2"
+    }
+  ]
+}

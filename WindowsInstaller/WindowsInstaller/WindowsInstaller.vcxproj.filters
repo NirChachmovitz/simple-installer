@@ -44,9 +44,6 @@
     <ClInclude Include="consts.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Utils\json.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="WindowsInstallerTask\ITask.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -75,6 +72,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="WindowsInstallerTask\TaskFactory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Utils\json.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

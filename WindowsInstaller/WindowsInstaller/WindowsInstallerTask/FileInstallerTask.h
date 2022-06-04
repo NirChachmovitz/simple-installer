@@ -21,6 +21,7 @@ public:
 	friend void from_json(const nlohmann::json& j, std::unique_ptr<FileInstallerTask>& task);
 
 private:
-	std::wstring source_file_path;
-	std::wstring target_directory_path;
+	// TODO: make wstring. according to the manual of nlohmann, wstring is not supported.
+	std::string source_file_path;
+	std::string target_directory_path;
 };
