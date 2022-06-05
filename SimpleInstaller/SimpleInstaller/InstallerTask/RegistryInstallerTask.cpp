@@ -14,9 +14,11 @@ std::unordered_map<std::wstring, HKEY> string_to_registry_key {
 	{L"HKEY_USERS", HKEY_USERS}
 };
 
+
 RegistryInstallerTask::RegistryInstallerTask(const std::wstring& registry_key_path, const std::wstring& registry_value_name, const std::wstring& registry_value)
 	: m_registry_key_path(registry_key_path), m_registry_value_name(registry_value_name), m_registry_value(registry_value), m_previous_data({ false, {} })
 {}
+
 
 HKEY convert_string_to_main_hkey(const std::wstring& key)
 {
@@ -24,6 +26,7 @@ HKEY convert_string_to_main_hkey(const std::wstring& key)
 	const auto main_key = key.substr(0, first_separator_position);
 	return string_to_registry_key[main_key];
 }
+
 
 std::wstring convert_string_to_sub_key(const std::wstring& key)
 {
@@ -67,7 +70,9 @@ void RegistryInstallerTask::rollback()
 			registry_key.remove();
 		}
 	}
-	catch (...) {}
+	catch (...) {
+		LOG(ERROR) << "FileInstallerTask: Failed to rollback";
+	}
 }
 
 void RegistryInstallerTask::recover_previous_registry_value(HKEY main_key, const std::wstring& sub_key) const

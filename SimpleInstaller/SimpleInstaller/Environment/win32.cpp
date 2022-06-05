@@ -76,6 +76,7 @@ std::wstring win32::path_combine(const std::wstring& first_path, const std::wstr
 	return std::wstring(buffer.begin(), buffer.end());
 }
 
+
 bool win32::is_directory_exists(const std::wstring& directory)
 {
 	return PathIsDirectoryW(directory.data());
@@ -96,8 +97,6 @@ void win32::remove_directory(const std::wstring& directory)
 		throw RemoveDirectoryException("remove_directory failed, last error is: " + std::to_string(GetLastError()));
 	}
 }
-
-
 
 
 void win32::close_handle(HANDLE file_handle)
@@ -132,11 +131,10 @@ bool win32::is_registry_key_exists(HKEY key, const std::wstring& sub_key)
 
 void win32::delete_registry_key(HKEY key, const std::wstring& sub_key)
 {
-	if (ERROR_SUCCESS != RegDeleteKey(key, sub_key.data())) {
+	if (ERROR_SUCCESS != RegDeleteKeyW(key, sub_key.data())) {
 		throw RegDeleteKeyException("delete_registry_key failed, last error is: " + std::to_string(GetLastError()));
 	}
 }
-
 
 
 void win32::close_registry_key(HKEY key)
@@ -168,7 +166,6 @@ void win32::flush_registry_key(HKEY key)
 
 void win32::set_registry_string_value(HKEY key, const std::wstring& value_name, const std::wstring& value)
 {
-	// TODO: change this
 	if (ERROR_SUCCESS != RegSetValueExW(key, value_name.data(), 0, REG_SZ, reinterpret_cast<const BYTE*>(value.c_str()), value.size() * 2 + 1)) {
 		throw RegSetValueException("set_registry_string_value failed, last error is: " + std::to_string(GetLastError()));
 	}

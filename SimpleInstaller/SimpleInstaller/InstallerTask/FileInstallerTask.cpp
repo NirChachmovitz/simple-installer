@@ -13,7 +13,7 @@ FileInstallerTask::FileInstallerTask(const std::wstring& source_file_path, const
 
 void FileInstallerTask::create_non_exist_directories()
 {
-	size_t number_of_directories = std::count(m_target_directory_path.begin(), m_target_directory_path.end(), '\\');
+	const size_t number_of_directories = std::count(m_target_directory_path.begin(), m_target_directory_path.end(), '\\');
 	size_t current_position_of_separator = 0;
 	for (size_t i = 0; i < number_of_directories + 1; i++) {
 		current_position_of_separator = m_target_directory_path.find(LR"(\)", current_position_of_separator + 1);
@@ -33,9 +33,10 @@ void FileInstallerTask::execute()
 	LOG(INFO) << "Executing a file installer task";
 
 	create_non_exist_directories();
+
 	const std::wstring file_name = m_source_file_path.substr(m_source_file_path.find_last_of(PATH_SEPARATOR) + 1);
 
-	const std::wstring new_file_path = win32::path_combine(m_target_directory_path, file_name); // TODO: maybe filesystem::path?
+	const std::wstring new_file_path = win32::path_combine(m_target_directory_path, file_name);
 	
 	try {
 		const File target_file(new_file_path, GENERIC_ALL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL);

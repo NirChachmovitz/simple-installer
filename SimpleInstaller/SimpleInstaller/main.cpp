@@ -51,6 +51,7 @@ int wmain(int argc, wchar_t* argv[], wchar_t* envp[])
 		LOG(FATAL) << "Failed running for unknown reason";
 		return UNKNOWN_FAILURE_OCCURRED;
 	}
+
 	LOG(INFO) << "Finished Running Successfully";
 	return INSTALLATION_SUCCESS;
 }

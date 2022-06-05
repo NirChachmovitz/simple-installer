@@ -29,6 +29,5 @@ void RegistryKey::write(const std::wstring& value_name, const std::wstring& valu
 
 void RegistryKey::remove() const
 {
-	// TODO: maybe do nullptr everywhere?
 	win32::delete_registry_key(m_key, nullptr);
 }

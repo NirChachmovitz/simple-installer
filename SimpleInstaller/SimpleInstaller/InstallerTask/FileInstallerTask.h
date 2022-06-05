@@ -11,7 +11,7 @@
 
 // A struct to keep the previous data of the file if it exists already.
 // Using it, the rollback will be perfect.
-struct PreviousData
+struct PreviousFileData
 {
 	bool did_exist;
 	std::vector<std::byte> data;
@@ -47,7 +47,7 @@ private:
 
 	std::wstring m_source_file_path;
 	std::wstring m_target_directory_path;
-	PreviousData m_previous_data;
+	PreviousFileData m_previous_data;
 
 	// keeps track of the created directories on the way
 	std::stack<std::wstring> m_created_directories;

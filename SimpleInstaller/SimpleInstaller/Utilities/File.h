@@ -41,11 +41,12 @@ public:
 	// Wiping the file, so nothing remains...
 	void wipe() const;
 
+	// Returning the size of the file
 	uint32_t get_file_size() const;
 
 	~File();
 
-	DEFAULT_CLASS_METHODS(File);
+	DEFAULT_CLASS_METHODS(File)
 private:
 	std::wstring m_file_path;
 	HANDLE m_file_handle;
