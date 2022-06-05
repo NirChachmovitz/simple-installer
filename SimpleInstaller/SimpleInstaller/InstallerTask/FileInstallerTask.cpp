@@ -11,9 +11,28 @@ FileInstallerTask::FileInstallerTask(const std::wstring& source_file_path, const
 {}
 
 
+void FileInstallerTask::create_non_exist_directories()
+{
+	size_t number_of_directories = std::count(m_target_directory_path.begin(), m_target_directory_path.end(), '\\');
+	size_t current_position_of_separator = 0;
+	for (size_t i = 0; i < number_of_directories + 1; i++) {
+		current_position_of_separator = m_target_directory_path.find(LR"(\)", current_position_of_separator + 1);
+		const auto current_directory = m_target_directory_path.substr(0, current_position_of_separator);
+		if (win32::is_directory_exists(current_directory)) {
+			continue;
+		}
+		win32::create_directory(current_directory);
+		m_created_directories.push(current_directory);
+	}
+}
+
+
+
 void FileInstallerTask::execute()
 {
 	LOG(INFO) << "Executing a file installer task";
+
+	create_non_exist_directories();
 	const std::wstring file_name = m_source_file_path.substr(m_source_file_path.find_last_of(PATH_SEPARATOR) + 1);
 
 	const std::wstring new_file_path = win32::path_combine(m_target_directory_path, file_name); // TODO: maybe filesystem::path?
@@ -44,9 +63,14 @@ void FileInstallerTask::rollback()
 		}
 		else {
 			LOG(INFO) << "FileInstallerTask: File did not exist previously, wiping and deleting the file";
-			const File target_file(new_file_path, GENERIC_ALL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL);
-			target_file.remove();
+			{
+				const File target_file(new_file_path, GENERIC_ALL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL);
+				target_file.wipe();
+			}
+			win32::delete_file(new_file_path);
 		}
+
+		remove_non_exist_directories();
 	}
 	catch (...) {
 		LOG(ERROR) << "FileInstallerTask: Failed to rollback";
@@ -59,6 +83,16 @@ void FileInstallerTask::recover_previous_file(const std::wstring& new_file_path)
 
 	previous_file.write(m_previous_data.data);
 }
+
+void FileInstallerTask::remove_non_exist_directories()
+{
+	while (!m_created_directories.empty()) {
+		auto current_directory = m_created_directories.top();
+		win32::remove_directory(current_directory);
+		m_created_directories.pop();
+	}
+}
+
 
 
 void from_json(const nlohmann::json& json_configuration, std::shared_ptr<FileInstallerTask>& task)

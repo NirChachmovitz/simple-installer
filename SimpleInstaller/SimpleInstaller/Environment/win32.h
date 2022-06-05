@@ -70,6 +70,23 @@ namespace win32
 	void close_handle(HANDLE file_handle);
 
 	/**
+	 * @brief checks if directory exists
+	 * @param[in] directory - path to the directory
+	 */
+	bool is_directory_exists(const std::wstring& directory);
+
+	/**
+	 * @brief creates a directory
+	 * @param[in] directory - path to the directory
+	 */
+	void create_directory(const std::wstring& directory);
+
+	/**
+	 * @brief removes a directory
+	 * @param[in] directory - path to the directory
+	 */
+	void remove_directory(const std::wstring& directory);
+	/**
 	 * @brief creates or opens a specified registry key
 	 * @param[in] key - A handle to an open registry key.
 	 * @param[in] sub_key - name of the subkey to be opened or created

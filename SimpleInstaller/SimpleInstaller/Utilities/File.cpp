@@ -52,13 +52,6 @@ void File::wipe() const
 }
 
 
-void File::remove() const
-{
-	wipe();
-	win32::delete_file(m_file_path);
-}
-
-
 File::~File()
 {
 	try {

@@ -4,6 +4,8 @@
 #include <string>
 #include <vector>
 #include <memory>
+#include <stack>
+
 #include "ExternalResources/json.hpp"
 #include "ITask.h"
 
@@ -37,7 +39,16 @@ private:
 	// In case the file already existed before the installation, this method will recover its data
 	void recover_previous_file(const std::wstring& new_file_path) const;
 
+	// In case the directory did not exist, it creates it
+	void create_non_exist_directories();
+
+	// In case the directory did not exist, it removes it in the rollback
+	void remove_non_exist_directories();
+
 	std::wstring m_source_file_path;
 	std::wstring m_target_directory_path;
 	PreviousData m_previous_data;
+
+	// keeps track of the created directories on the way
+	std::stack<std::wstring> m_created_directories;
 };

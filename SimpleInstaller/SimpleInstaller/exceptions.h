@@ -24,6 +24,8 @@ DEFINE_EXCEPTION(WriteFileException, FileException);
 DEFINE_EXCEPTION(DeleteFileException, FileException);
 DEFINE_EXCEPTION(PathCombineException, FileException);
 DEFINE_EXCEPTION(CloseHandleException, FileException);
+DEFINE_EXCEPTION(CreateDirectoryException, FileException);
+DEFINE_EXCEPTION(RemoveDirectoryException, FileException);
 
 // Registry Exceptions
 DEFINE_EXCEPTION(RegistryException, Win32UtilsException);

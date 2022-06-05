@@ -63,7 +63,6 @@ void win32::delete_file(const std::wstring& file_path)
 {
 	if (!DeleteFileW(file_path.c_str())) {
 		throw DeleteFileException("delete_file failed, last error is: " + std::to_string(GetLastError()));
-
 	}
 }
 
@@ -76,6 +75,29 @@ std::wstring win32::path_combine(const std::wstring& first_path, const std::wstr
 	}
 	return std::wstring(buffer.begin(), buffer.end());
 }
+
+bool win32::is_directory_exists(const std::wstring& directory)
+{
+	return PathIsDirectoryW(directory.data());
+}
+
+
+void win32::create_directory(const std::wstring& directory)
+{
+	if (!CreateDirectoryW(directory.data(), nullptr)) {
+		throw CreateDirectoryException("create_directory failed, last error is: " + std::to_string(GetLastError()));
+	}
+}
+
+
+void win32::remove_directory(const std::wstring& directory)
+{
+	if (!RemoveDirectoryW(directory.data())) {
+		throw RemoveDirectoryException("remove_directory failed, last error is: " + std::to_string(GetLastError()));
+	}
+}
+
+
 
 
 void win32::close_handle(HANDLE file_handle)

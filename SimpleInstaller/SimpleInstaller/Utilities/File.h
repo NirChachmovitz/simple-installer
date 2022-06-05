@@ -38,8 +38,7 @@ public:
 	 */
 	void copy(const std::wstring& new_file_path) const;
 
-	// Wiping and deleting the file, so nothing remains...
-	void remove() const;
+	// Wiping the file, so nothing remains...
 	void wipe() const;
 
 	uint32_t get_file_size() const;
