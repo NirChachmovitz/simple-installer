@@ -5,6 +5,8 @@
 #include <string>
 #include <vector>
 
+#include "macros.h"
+
 // A RAII class for guarding a file
 class File
 {
@@ -29,20 +31,22 @@ public:
 	/**
 	 * @param[in] buffer - the buffer to be written to the file from the beginning
 	 */
-	void write(std::vector<std::byte> buffer) const;
+	void write(const std::vector<std::byte>& buffer) const;
 
 	/**
 	 * @param[in] new_file_path - the place to which copy the file
 	 */
-	void copy(std::wstring new_file_path) const;
+	void copy(const std::wstring& new_file_path) const;
 
 	// Wiping and deleting the file, so nothing remains...
-	void remove();
+	void remove() const;
 	void wipe() const;
 
 	int get_file_size() const;
 
 	~File();
+
+	DEFAULT_CLASS_METHODS(File);
 private:
 	std::wstring file_path;
 	HANDLE file_handle;

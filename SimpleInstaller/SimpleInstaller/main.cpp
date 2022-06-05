@@ -39,6 +39,10 @@ int wmain(int argc, wchar_t* argv[], wchar_t* envp[])
 		LOG(FATAL) << "Failed to process the json configuration, " << json_exception.what();
 		return JSON_CONFIGURATION_FAILURE;
 	}
+	catch (const UnknownTaskException&) {
+		LOG(FATAL) << "The json configuration included unknown task";
+		return JSON_PARSER_FAILURE;
+	}
 	catch (const FileException& file_exception) {
 		LOG(FATAL) << file_exception.what();
 		return FILE_IO_FAILURE;

@@ -3,7 +3,7 @@
 #include "consts.h"
 #include "Configuration/json.hpp"
 #include "Logger/easylogging++.h"
-#include "Environment/win32_utils.h"
+#include "Environment/win32.h"
 #include "Utilities/RegistryKey.h"
 
 std::unordered_map<std::wstring, HKEY> string_to_registry_key = {
@@ -36,7 +36,7 @@ void RegistryInstallerTask::execute()
 
 	HKEY main_key = convert_string_to_main_hkey(registry_key_path);
 	std::wstring sub_key = convert_string_to_sub_hkey(registry_key_path);
-	if (win32_utils::is_registry_key_exists(main_key, sub_key)) {
+	if (win32::is_registry_key_exists(main_key, sub_key)) {
 		previous_data.did_exist = true;
 	}
 

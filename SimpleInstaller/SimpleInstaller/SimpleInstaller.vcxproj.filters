@@ -33,7 +33,7 @@
     <ClCompile Include="Utilities\File.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Environment\win32_utils.cpp">
+    <ClCompile Include="Environment\win32.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
@@ -71,7 +71,7 @@
     <ClInclude Include="Utilities\File.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Environment\win32_utils.h">
+    <ClInclude Include="Environment\win32.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="error_codes.h">

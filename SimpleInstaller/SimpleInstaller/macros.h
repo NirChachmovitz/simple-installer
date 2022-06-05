@@ -13,3 +13,5 @@
 #define DEFAULT_INTERFACE_METHODS(classname) classname() = default; \
 											 virtual ~classname() = default; \
 											 DEFAULT_COPY_AND_MOVE_METHODS(classname)
+
+#define DEFAULT_CLASS_METHODS(classname) DEFAULT_COPY_AND_MOVE_METHODS(classname)

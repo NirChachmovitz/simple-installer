@@ -8,7 +8,7 @@
 /**
  * A namespace for supplying all the winapi utils, for a more convenient exception handling
  */
-namespace win32_utils
+namespace win32
 {
 	/**
 	 * @brief Creates or opens a file or I/O device.

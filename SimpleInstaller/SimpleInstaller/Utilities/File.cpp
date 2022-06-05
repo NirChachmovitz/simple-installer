@@ -1,23 +1,23 @@
 #include "File.h"
 
 #include "consts.h"
-#include "Environment/win32_utils.h"
+#include "Environment/win32.h"
 
 
 File::File(const std::wstring& file_path, uint32_t desired_access, uint32_t creation_disposition, uint32_t flags_and_attributes) :
-			file_path(file_path), file_handle(win32_utils::create_file(file_path, desired_access, creation_disposition, flags_and_attributes))
+			file_path(file_path), file_handle(win32::create_file(file_path, desired_access, creation_disposition, flags_and_attributes))
 {}
 
 
 int File::get_file_size() const
 {
-	return win32_utils::get_file_size(file_handle);
+	return win32::get_file_size(file_handle);
 }
 
 
 std::vector<std::byte> File::read(uint32_t number_of_bytes) const
 {
-	return win32_utils::read_file(file_handle, number_of_bytes);
+	return win32::read_file(file_handle, number_of_bytes);
 }
 
 
@@ -28,16 +28,16 @@ std::vector<std::byte> File::read_entire_file() const
 }
 
 
-void File::write(std::vector<std::byte> buffer) const
+void File::write(const std::vector<std::byte>& buffer) const
 {
-	win32_utils::write_file(file_handle, buffer);
+	win32::write_file(file_handle, buffer);
 }
 
 
 
-void File::copy(std::wstring new_file_path) const
+void File::copy(const std::wstring& new_file_path) const
 {
-	win32_utils::copy_file(file_path, new_file_path, false);
+	win32::copy_file(file_path, new_file_path, false);
 }
 
 
@@ -52,14 +52,18 @@ void File::wipe() const
 }
 
 
-void File::remove()
+void File::remove() const
 {
 	wipe();
-	win32_utils::delete_file(file_path);
+	win32::delete_file(file_path);
 }
 
 
 File::~File()
 {
-	win32_utils::close_handle(file_handle);
+	try {
+		win32::close_handle(file_handle);
+	} catch(...) {
+		// Might throw while using a debugger under special circumstances
+	}
 }

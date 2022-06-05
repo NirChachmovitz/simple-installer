@@ -33,3 +33,8 @@ DEFINE_EXCEPTION(RegCloseKeyException, RegistryException);
 DEFINE_EXCEPTION(RegQueryKeyException, RegistryException);
 DEFINE_EXCEPTION(RegSetValueException, RegistryException);
 DEFINE_EXCEPTION(RegDeleteKeyException, RegistryException);
+
+// JSON Exceptions
+DEFINE_EXCEPTION(JsonException, WindowsInstallerException)
+DEFINE_EXCEPTION(ParseConfigurationException, JsonException)
+DEFINE_EXCEPTION(UnknownTaskException, ParseConfigurationException)

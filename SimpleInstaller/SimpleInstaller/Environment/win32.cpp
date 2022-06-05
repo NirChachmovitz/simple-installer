@@ -1,4 +1,4 @@
-#include "win32_utils.h"
+#include "win32.h"
 
 #include <memory>
 #include <Shlwapi.h>
@@ -6,7 +6,7 @@
 #include "consts.h"
 #include "exceptions.h"
 
-HANDLE win32_utils::create_file(const std::wstring& file_path, uint32_t desired_access, uint32_t creation_disposition,
+HANDLE win32::create_file(const std::wstring& file_path, uint32_t desired_access, uint32_t creation_disposition,
 	uint32_t flags_and_attributes)
 {
 	const HANDLE file_handle = CreateFileW(file_path.data(), desired_access, 0, nullptr, creation_disposition, flags_and_attributes, nullptr);
@@ -17,7 +17,7 @@ HANDLE win32_utils::create_file(const std::wstring& file_path, uint32_t desired_
 }
 
 
-int win32_utils::get_file_size(HANDLE file_handle)
+int win32::get_file_size(HANDLE file_handle)
 {
 	const uint32_t file_size = GetFileSize(file_handle, nullptr);
 	if (INVALID_FILE_SIZE == file_size) {
@@ -27,7 +27,7 @@ int win32_utils::get_file_size(HANDLE file_handle)
 }
 
 
-void win32_utils::copy_file(const std::wstring& file_path, const std::wstring& new_file_path, bool fail_if_exists)
+void win32::copy_file(const std::wstring& file_path, const std::wstring& new_file_path, bool fail_if_exists)
 {
 	if (!CopyFileW(file_path.data(), new_file_path.data(), fail_if_exists)) {
 		throw CopyFileException("copy_file failed, last error is: " + GetLastError());
@@ -35,7 +35,7 @@ void win32_utils::copy_file(const std::wstring& file_path, const std::wstring& n
 }
 
 
-std::vector<std::byte> win32_utils::read_file(HANDLE file_handle, uint32_t number_of_bytes_to_read)
+std::vector<std::byte> win32::read_file(HANDLE file_handle, uint32_t number_of_bytes_to_read)
 {
 	std::vector<std::byte> buffer(number_of_bytes_to_read);
 	DWORD number_of_bytes_read;
@@ -48,7 +48,7 @@ std::vector<std::byte> win32_utils::read_file(HANDLE file_handle, uint32_t numbe
 }
 
 
-void win32_utils::write_file(HANDLE file_handle, std::vector<std::byte> buffer)
+void win32::write_file(HANDLE file_handle, std::vector<std::byte> buffer)
 {
 	DWORD number_of_bytes_written;
 	if (!WriteFile(file_handle, buffer.data(), buffer.size(), &number_of_bytes_written, nullptr)) {
@@ -57,7 +57,7 @@ void win32_utils::write_file(HANDLE file_handle, std::vector<std::byte> buffer)
 }
 
 
-void win32_utils::delete_file(const std::wstring& file_path)
+void win32::delete_file(const std::wstring& file_path)
 {
 	if (!DeleteFileW(file_path.c_str())) {
 		throw DeleteFileException("delete_file failed, last error is: " + GetLastError());
@@ -66,7 +66,7 @@ void win32_utils::delete_file(const std::wstring& file_path)
 }
 
 
-std::wstring win32_utils::path_combine(const std::wstring& first_path, const std::wstring& second_path)
+std::wstring win32::path_combine(const std::wstring& first_path, const std::wstring& second_path)
 {
 	std::vector<wchar_t> buffer(first_path.size() + second_path.size() + 2);
 	if (nullptr == PathCombineW(buffer.data(), first_path.c_str(), second_path.c_str())) {
@@ -76,7 +76,7 @@ std::wstring win32_utils::path_combine(const std::wstring& first_path, const std
 }
 
 
-void win32_utils::close_handle(HANDLE file_handle)
+void win32::close_handle(HANDLE file_handle)
 {
 	if (!CloseHandle(file_handle)) {
 		throw CloseHandleException("close_handle failed, last error is: " + GetLastError());
@@ -84,7 +84,7 @@ void win32_utils::close_handle(HANDLE file_handle)
 }
 
 
-HKEY win32_utils::create_registry_key(HKEY key, std::wstring sub_key, uint32_t option)
+HKEY win32::create_registry_key(HKEY key, std::wstring sub_key, uint32_t option)
 {
 	HKEY result;
 	DWORD disposition;
@@ -96,7 +96,7 @@ HKEY win32_utils::create_registry_key(HKEY key, std::wstring sub_key, uint32_t o
 }
 
 
-bool win32_utils::is_registry_key_exists(HKEY key, std::wstring sub_key)
+bool win32::is_registry_key_exists(HKEY key, std::wstring sub_key)
 {
 	HKEY result;
 	if (ERROR_SUCCESS == RegOpenKeyExW(key, sub_key.data(), 0, KEY_ALL_ACCESS, &result)) {
@@ -106,7 +106,7 @@ bool win32_utils::is_registry_key_exists(HKEY key, std::wstring sub_key)
 }
 
 
-void win32_utils::delete_registry_key(HKEY key, std::wstring sub_key)
+void win32::delete_registry_key(HKEY key, std::wstring sub_key)
 {
 	if (ERROR_SUCCESS != RegDeleteKey(key, sub_key.data())) {
 		throw RegDeleteKeyException("delete_registry_key failed, last error is: " + GetLastError());
@@ -115,7 +115,7 @@ void win32_utils::delete_registry_key(HKEY key, std::wstring sub_key)
 
 
 
-void win32_utils::close_registry_key(HKEY key)
+void win32::close_registry_key(HKEY key)
 {
 	if (ERROR_SUCCESS != RegCloseKey(key)) {
 		throw RegCloseKeyException("close_registry_key failed, last error is: " + GetLastError());
@@ -123,7 +123,7 @@ void win32_utils::close_registry_key(HKEY key)
 }
 
 
-std::vector<std::byte> win32_utils::query_registry_value(HKEY key)
+std::vector<std::byte> win32::query_registry_value(HKEY key)
 {
 	UNREFERENCED_PARAMETER(key);
 	return {};
@@ -136,7 +136,7 @@ std::vector<std::byte> win32_utils::query_registry_value(HKEY key)
 }
 
 
-void win32_utils::set_registry_string_value(HKEY key, std::vector<std::byte> value)
+void win32::set_registry_string_value(HKEY key, std::vector<std::byte> value)
 {
 	UNREFERENCED_PARAMETER(key);
 	UNREFERENCED_PARAMETER(value);

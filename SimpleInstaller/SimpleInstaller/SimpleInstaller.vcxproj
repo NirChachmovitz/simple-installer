@@ -167,7 +167,7 @@
     <ClCompile Include="Logger\easylogging++.cc" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Utilities\File.cpp" />
-    <ClCompile Include="Environment\win32_utils.cpp" />
+    <ClCompile Include="Environment\win32.cpp" />
     <ClCompile Include="Utilities\RegistryKey.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -184,7 +184,7 @@
     <ClInclude Include="Logger\easylogging++.h" />
     <ClInclude Include="macros.h" />
     <ClInclude Include="Utilities\File.h" />
-    <ClInclude Include="Environment\win32_utils.h" />
+    <ClInclude Include="Environment\win32.h" />
     <ClInclude Include="Utilities\RegistryKey.h" />
   </ItemGroup>
   <ItemGroup>
