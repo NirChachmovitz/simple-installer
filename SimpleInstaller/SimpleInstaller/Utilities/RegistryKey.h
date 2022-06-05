@@ -5,6 +5,8 @@
 #include <string>
 #include <vector>
 
+#include "macros.h"
+
 
 // A RAII class for guarding a registry key
 class RegistryKey
@@ -27,6 +29,13 @@ public:
 	 * @param[in] value - the value to be written
 	 */
 	void write(const std::wstring& value_name, const std::wstring& value) const;
+
+	DELETED_COPY_METHODS(RegistryKey)
+
+	RegistryKey(RegistryKey&& other) noexcept;
+
+	RegistryKey& operator=(RegistryKey&& other);
+
 
 private:
 	HKEY m_key;

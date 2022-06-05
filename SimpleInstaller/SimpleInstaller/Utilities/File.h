@@ -46,7 +46,12 @@ public:
 
 	~File();
 
-	DEFAULT_CLASS_METHODS(File)
+	DELETED_COPY_METHODS(File)
+
+	File(File&& other) noexcept;
+
+	File& operator=(File&& other);
+
 private:
 	std::wstring m_file_path;
 	HANDLE m_file_handle;

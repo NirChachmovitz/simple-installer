@@ -8,9 +8,23 @@ RegistryKey::RegistryKey(HKEY key, std::wstring sub_key, uint32_t option) :
 {}
 
 
+RegistryKey::RegistryKey(RegistryKey&& other) noexcept : m_key(other.m_key)
+{
+	other.m_key = nullptr;
+}
+
+RegistryKey& RegistryKey::operator=(RegistryKey&& other)
+{
+	m_key = other.m_key;
+	other.m_key = nullptr;
+	return *this;
+}
+
 RegistryKey::~RegistryKey()
 {
-	win32::close_registry_key(m_key);
+	if (nullptr != m_key) {
+		win32::close_registry_key(m_key);
+	}
 }
 
 

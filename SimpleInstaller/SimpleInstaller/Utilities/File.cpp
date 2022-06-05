@@ -2,11 +2,27 @@
 
 #include "consts.h"
 #include "Environment/win32.h"
+#include "ExternalResources/Logger/easylogging++.h"
 
 
 File::File(const std::wstring& file_path, uint32_t desired_access, uint32_t creation_disposition, uint32_t flags_and_attributes) :
 			m_file_path(file_path), m_file_handle(win32::create_file(file_path, desired_access, creation_disposition, flags_and_attributes))
 {}
+
+
+File::File(File&& other) noexcept : m_file_path(other.m_file_path), m_file_handle(other.m_file_handle)
+{
+	other.m_file_handle = INVALID_HANDLE_VALUE;
+}
+
+
+File& File::operator=(File&& other)
+{
+	m_file_path = other.m_file_path;
+	m_file_handle = other.m_file_handle;
+	other.m_file_handle = INVALID_HANDLE_VALUE;
+	return *this;
+}
 
 
 uint32_t File::get_file_size() const
@@ -55,8 +71,10 @@ void File::wipe() const
 File::~File()
 {
 	try {
-		win32::close_handle(m_file_handle);
+		if (INVALID_HANDLE_VALUE != m_file_handle) {
+			win32::close_handle(m_file_handle);
+		}
 	} catch(...) {
-		// Might throw while using a debugger under special circumstances
+		LOG(INFO) << "A debugger is present and the handle is not valid. Read the manual for more information";
 	}
 }

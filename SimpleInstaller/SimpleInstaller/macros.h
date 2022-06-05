@@ -4,6 +4,9 @@
 #define DEFAULT_COPY_METHODS(classname) classname(const classname&) = default; \
 										classname& operator=(const classname&) = default;
 
+#define DELETED_COPY_METHODS(classname) classname(const classname&) = delete; \
+										classname& operator=(const classname&) = delete;
+
 #define DEFAULT_MOVE_METHODS(classname) classname(classname&&) = default; \
 										classname& operator=(classname&&) = default;
 
