@@ -1,6 +1,7 @@
 #pragma once
 
 
+#include <Windows.h>
 #include <string>
 #include <vector>
 #include <memory>
@@ -35,7 +36,7 @@ public:
 
 private:
 	// In case the registry key already existed before the installation, this method will recover its data
-	void recover_previous_key(const std::wstring& registry_key_path) const;
+	void recover_previous_registry_value(HKEY main_key, const std::wstring& sub_key) const;
 
 	std::wstring registry_key_path;
 	std::wstring registry_value;

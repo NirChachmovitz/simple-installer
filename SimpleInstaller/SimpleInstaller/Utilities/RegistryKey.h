@@ -16,7 +16,13 @@ public:
 
 	std::vector<std::byte> read() const;
 
-	void write(std::vector<std::byte>);
+	/**
+	 * @brief writes a string to the registry key
+	 * @param[in] value - the value to be written
+	 */
+	void write(const std::vector<std::byte>& value) const;
+
+	void remove() const;
 
 private:
 	HKEY key;

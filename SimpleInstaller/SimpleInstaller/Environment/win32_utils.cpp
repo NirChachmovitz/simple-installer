@@ -2,6 +2,8 @@
 
 #include <memory>
 #include <Shlwapi.h>
+
+#include "consts.h"
 #include "exceptions.h"
 
 HANDLE win32_utils::create_file(const std::wstring& file_path, uint32_t desired_access, uint32_t creation_disposition,
@@ -86,15 +88,31 @@ HKEY win32_utils::create_registry_key(HKEY key, std::wstring sub_key, uint32_t o
 {
 	HKEY result;
 	DWORD disposition;
-	if (ERROR_SUCCESS != RegCreateKeyExW(key, sub_key.data(), 0, nullptr, REG_OPTION_NON_VOLATILE, KEY_ALL_ACCESS,
+	if (ERROR_SUCCESS != RegCreateKeyExW(key, sub_key.data(), 0, nullptr, option, KEY_ALL_ACCESS,
 											nullptr, &result, &disposition)) {
 		throw RegCreateKeyException("get_registry_key failed, last error is: " + GetLastError());
 	}
-	/*if (REG_OPENED_EXISTING_KEY == disposition) { // TODO: catch it and do wonders
-		throw RegistryKeyAlreadyExistsException(); // TODO: maybe only get value
-	}*/
 	return result;
 }
+
+
+bool win32_utils::is_registry_key_exists(HKEY key, std::wstring sub_key)
+{
+	HKEY result;
+	if (ERROR_SUCCESS == RegOpenKeyExW(key, sub_key.data(), 0, KEY_ALL_ACCESS, &result)) {
+		return true;
+	}
+	return false;
+}
+
+
+void win32_utils::delete_registry_key(HKEY key, std::wstring sub_key)
+{
+	if (ERROR_SUCCESS != RegDeleteKey(key, sub_key.data())) {
+		throw RegDeleteKeyException("delete_registry_key failed, last error is: " + GetLastError());
+	}
+}
+
 
 
 void win32_utils::close_registry_key(HKEY key)
@@ -107,8 +125,23 @@ void win32_utils::close_registry_key(HKEY key)
 
 std::vector<std::byte> win32_utils::query_registry_value(HKEY key)
 {
-	/*std::vector<std::byte> data;
-	DWORD data_size;
-	if (ERROR_SUCCESS != RegQueryValueExW(key, nullptr, nullptr, nullptr, data.data(), data_size))*/
+	UNREFERENCED_PARAMETER(key);
+	return {};
+/*	std::vector<unsigned char> data(TOTAL_BYTES_TO_READ_FROM_REGISTRY);
+	DWORD data_size = TOTAL_BYTES_TO_READ_FROM_REGISTRY;
+	if (ERROR_SUCCESS != RegQueryValueExW(key, nullptr, nullptr, nullptr, data.data(), &data_size)) {
+		throw RegQueryKeyException("query_registry_value failed, last error is: " + GetLastError());
+	}
+	return std::vector<std::byte>(data.begin(), data.end());*/
 }
-&
+
+
+void win32_utils::set_registry_string_value(HKEY key, std::vector<std::byte> value)
+{
+	UNREFERENCED_PARAMETER(key);
+	UNREFERENCED_PARAMETER(value);
+	/*std::vector<unsigned char> byte_value(value.begin(), value.end());
+	if (ERROR_SUCCESS != RegSetValueExW(key, nullptr, 0, REG_SZ, byte_value.data(), value.size())) {
+		throw RegSetValueException("set_registry_string_value failed, last error is: " + GetLastError());
+	}*/
+}

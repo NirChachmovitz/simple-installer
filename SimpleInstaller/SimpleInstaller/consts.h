@@ -4,6 +4,7 @@
 #include <string>
 
 constexpr int VALID_NUMBER_OF_ARGUMENTS = 2;
+constexpr int TOTAL_BYTES_TO_READ_FROM_REGISTRY = 1024;
 
 constexpr char NULL_CHAR = '\0';
 

@@ -30,3 +30,6 @@ DEFINE_EXCEPTION(RegistryException, Win32UtilsException);
 DEFINE_EXCEPTION(RegCreateKeyException, RegistryException);
 DEFINE_EXCEPTION(RegistryKeyAlreadyExistsException, RegistryException);
 DEFINE_EXCEPTION(RegCloseKeyException, RegistryException);
+DEFINE_EXCEPTION(RegQueryKeyException, RegistryException);
+DEFINE_EXCEPTION(RegSetValueException, RegistryException);
+DEFINE_EXCEPTION(RegDeleteKeyException, RegistryException);

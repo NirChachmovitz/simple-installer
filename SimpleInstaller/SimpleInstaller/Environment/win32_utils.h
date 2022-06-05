@@ -85,6 +85,28 @@ namespace win32_utils
 	std::vector<std::byte> query_registry_value(HKEY key);
 
 	/**
+	 * @brief sets a string value to a given key
+	 * @param[in] key - the key of the registry
+	 * @param[in] value - the value to be written
+	 */
+	void set_registry_string_value(HKEY key, std::vector<std::byte> value);
+
+	/**
+	 * @brief checks if a registry key exists
+	 * @param[in] key - the key of the registry
+	 * @param[in] sub_key - name of the subkey to be opened or created
+	 * @return true or false whether exists or not
+	 */
+	bool is_registry_key_exists(HKEY key, std::wstring sub_key);
+
+	/**
+	 * @brief deletes a registry key
+	 * @param[in] key - the key of the registry
+	 * @param[in] sub_key - name of the subkey to be opened or created
+	 */
+	void delete_registry_key(HKEY key, std::wstring sub_key);
+
+	/**
 	 * @brief closes the registry key
 	 * @param[in] key - registry key
 	 */
