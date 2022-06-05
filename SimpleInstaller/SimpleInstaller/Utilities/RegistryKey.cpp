@@ -25,9 +25,3 @@ void RegistryKey::write(const std::wstring& value_name, const std::wstring& valu
 	win32::set_registry_string_value(m_key, value_name, value);
 	win32::flush_registry_key(m_key);
 }
-
-
-void RegistryKey::remove() const
-{
-	win32::delete_registry_key(m_key, nullptr);
-}

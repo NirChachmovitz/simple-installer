@@ -28,11 +28,6 @@ public:
 	 */
 	void write(const std::wstring& value_name, const std::wstring& value) const;
 
-	/**
-	 * @brief removes a registry key as part of the rollback
-	 */
-	void remove() const;
-
 private:
 	HKEY m_key;
 };

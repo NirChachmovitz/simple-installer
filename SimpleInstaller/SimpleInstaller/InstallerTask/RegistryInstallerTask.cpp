@@ -66,8 +66,7 @@ void RegistryInstallerTask::rollback()
 		}
 		else {
 			LOG(INFO) << "RegistryInstallerTask: Registry key did not exist previously, deleting it";
-			const RegistryKey registry_key(main_key, sub_key, REG_OPTION_NON_VOLATILE);
-			registry_key.remove();
+			win32::delete_registry_key(main_key, sub_key);
 		}
 	}
 	catch (...) {
