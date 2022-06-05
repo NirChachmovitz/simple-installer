@@ -9,7 +9,7 @@ File::File(const std::wstring& file_path, uint32_t desired_access, uint32_t crea
 {}
 
 
-int File::get_file_size() const
+uint32_t File::get_file_size() const
 {
 	return win32::get_file_size(m_file_handle);
 }
@@ -23,7 +23,7 @@ std::vector<std::byte> File::read(uint32_t number_of_bytes) const
 
 std::vector<std::byte> File::read_entire_file() const
 {
-	const int file_size = get_file_size();
+	const auto file_size = get_file_size();
 	return read(file_size);
 }
 
@@ -43,7 +43,7 @@ void File::copy(const std::wstring& new_file_path) const
 
 void File::wipe() const
 {
-	const int file_size = get_file_size();
+	const auto file_size = get_file_size();
 	if (0 != file_size) {
 		std::vector<std::byte> override_buffer(file_size, std::byte{NULL_CHAR});
 		write(override_buffer);

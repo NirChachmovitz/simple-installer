@@ -1,8 +1,8 @@
 #include "FileInstallerTask.h"
 
 #include "consts.h"
-#include "Configuration/json.hpp"
-#include "Logger/easylogging++.h"
+#include "ExternalResources/json.hpp"
+#include "ExternalResources/Logger/easylogging++.h"
 #include "Utilities/File.h"
 #include "Environment/win32.h"
 
@@ -14,12 +14,12 @@ FileInstallerTask::FileInstallerTask(const std::wstring& source_file_path, const
 void FileInstallerTask::execute()
 {
 	LOG(INFO) << "Executing a file installer task";
-	std::wstring file_name = m_source_file_path.substr(m_source_file_path.find_last_of(PATH_SEPARATOR) + 1);
+	const std::wstring file_name = m_source_file_path.substr(m_source_file_path.find_last_of(PATH_SEPARATOR) + 1);
 
-	std::wstring new_file_path = win32::path_combine(m_target_directory_path, file_name); // TODO: maybe filesystem::path?
+	const std::wstring new_file_path = win32::path_combine(m_target_directory_path, file_name); // TODO: maybe filesystem::path?
 	
 	try {
-		File target_file(new_file_path, GENERIC_ALL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL);
+		const File target_file(new_file_path, GENERIC_ALL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL);
 
 		// File Exists, so treat it accordingly and update the previous data structure
 		m_previous_data.did_exist = true;
@@ -35,8 +35,8 @@ void FileInstallerTask::execute()
 void FileInstallerTask::rollback()
 {
 	try {
-		std::wstring file_name = m_source_file_path.substr(m_source_file_path.find_last_of(PATH_SEPARATOR) + 1);
-		std::wstring new_file_path = win32::path_combine(m_target_directory_path, file_name);
+		const std::wstring file_name = m_source_file_path.substr(m_source_file_path.find_last_of(PATH_SEPARATOR) + 1);
+		const std::wstring new_file_path = win32::path_combine(m_target_directory_path, file_name);
 
 		if (m_previous_data.did_exist) {
 			LOG(INFO) << "FileInstallerTask: File already existed, recovering the previous data";
@@ -44,7 +44,7 @@ void FileInstallerTask::rollback()
 		}
 		else {
 			LOG(INFO) << "FileInstallerTask: File did not exist previously, wiping and deleting the file";
-			File target_file(new_file_path, GENERIC_ALL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL);
+			const File target_file(new_file_path, GENERIC_ALL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL);
 			target_file.remove();
 		}
 	}
@@ -55,7 +55,7 @@ void FileInstallerTask::rollback()
 
 void FileInstallerTask::recover_previous_file(const std::wstring& new_file_path) const
 {
-	File previous_file(new_file_path, GENERIC_ALL, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL);
+	const File previous_file(new_file_path, GENERIC_ALL, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL);
 
 	previous_file.write(m_previous_data.data);
 }

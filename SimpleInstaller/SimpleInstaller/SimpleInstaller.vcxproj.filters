@@ -27,7 +27,7 @@
     <ClCompile Include="InstallerTask\TaskFactory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Logger\easylogging++.cc">
+    <ClCompile Include="ExternalResources\Logger\easylogging++.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Utilities\File.cpp">
@@ -50,7 +50,7 @@
     <ClInclude Include="Configuration\configuration_parse.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Configuration\json.hpp">
+    <ClInclude Include="ExternalResources\json.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Installer\Installer.h">
@@ -65,7 +65,7 @@
     <ClInclude Include="InstallerTask\TaskFactory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Logger\easylogging++.h">
+    <ClInclude Include="ExternalResources\Logger\easylogging++.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Utilities\File.h">

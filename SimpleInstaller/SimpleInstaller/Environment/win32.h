@@ -25,7 +25,7 @@ namespace win32
 	 * @brief returns the size of the file
 	 * @param[in] file_handle - handle to the file
 	 */
-	int get_file_size(HANDLE file_handle);
+	uint32_t get_file_size(HANDLE file_handle);
 
 	/**
 	 * @brief copies an existing file to a new file.
@@ -48,7 +48,7 @@ namespace win32
 	 * @param[in] file_handle - a handle to the file
 	 * @param[in] buffer - buffer to be written to the file
 	 */
-	void write_file(HANDLE file_handle, std::vector<std::byte> buffer);
+	void write_file(HANDLE file_handle, const std::vector<std::byte>& buffer);
 
 	/**
 	 * @brief delete a file from the disk
@@ -76,7 +76,7 @@ namespace win32
 	 * @param[in] option - options to open the registry key
 	 * @returns the desired key
 	 */
-	HKEY create_registry_key(HKEY key, std::wstring sub_key, uint32_t option);
+	HKEY create_registry_key(HKEY key, const std::wstring& sub_key, uint32_t option);
 
 	/**
 	 * @brief queries the registry value
@@ -99,14 +99,14 @@ namespace win32
 	 * @param[in] sub_key - name of the subkey to be opened or created
 	 * @return true or false whether exists or not
 	 */
-	bool is_registry_key_exists(HKEY key, std::wstring sub_key);
+	bool is_registry_key_exists(HKEY key, const std::wstring& sub_key);
 
 	/**
 	 * @brief deletes a registry key
 	 * @param[in] key - the key of the registry
 	 * @param[in] sub_key - name of the subkey to be opened or created
 	 */
-	void delete_registry_key(HKEY key, std::wstring sub_key);
+	void delete_registry_key(HKEY key, const std::wstring& sub_key);
 
 	/**
 	 * @brief flushes registry key

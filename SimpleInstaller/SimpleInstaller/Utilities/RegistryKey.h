@@ -14,6 +14,11 @@ public:
 
 	~RegistryKey();
 
+	/**
+	 * @brief reads a string from a registry key and an according value name
+	 * @param[in] value_name - a name of the value to be read
+	 * @returns the string
+	 */
 	std::wstring read(const std::wstring& value_name) const;
 
 	/**
@@ -23,6 +28,9 @@ public:
 	 */
 	void write(const std::wstring& value_name, const std::wstring& value) const;
 
+	/**
+	 * @brief removes a registry key as part of the rollback
+	 */
 	void remove() const;
 
 private:

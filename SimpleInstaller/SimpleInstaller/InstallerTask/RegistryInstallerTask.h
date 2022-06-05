@@ -4,7 +4,7 @@
 #include <Windows.h>
 #include <string>
 #include <memory>
-#include "Configuration/json.hpp"
+#include "ExternalResources/json.hpp"
 #include "ITask.h"
 
 // A struct to keep the previous data of the file if it exists already.

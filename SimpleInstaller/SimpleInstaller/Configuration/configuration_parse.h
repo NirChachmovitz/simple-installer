@@ -3,7 +3,7 @@
 
 #include <string>
 
-#include "json.hpp"
+#include "ExternalResources/json.hpp"
 
 /**
  * Meant to parse the json configuration and create it given its path

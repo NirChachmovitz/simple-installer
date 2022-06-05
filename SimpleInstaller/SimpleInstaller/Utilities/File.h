@@ -42,7 +42,7 @@ public:
 	void remove() const;
 	void wipe() const;
 
-	int get_file_size() const;
+	uint32_t get_file_size() const;
 
 	~File();
 

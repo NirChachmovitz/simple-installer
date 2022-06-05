@@ -1,11 +1,11 @@
 #include <Windows.h>
 
+#include "consts.h"
 #include "error_codes.h"
 #include "exceptions.h"
-#include "consts.h"
 #include "Configuration/configuration_parse.h"
-#include "Configuration/json.hpp"
-#include "Logger/easylogging++.h"
+#include "ExternalResources/json.hpp"
+#include "ExternalResources/Logger/easylogging++.h"
 #include "Installer/Installer.h"
 
 INITIALIZE_EASYLOGGINGPP

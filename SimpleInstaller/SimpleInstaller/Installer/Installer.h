@@ -5,7 +5,7 @@
 #include <memory>
 #include <stack>
 
-#include "Configuration/json.hpp"
+#include "ExternalResources/json.hpp"
 #include "InstallerTask/ITask.h"
 
 /**
