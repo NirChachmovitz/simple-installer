@@ -30,10 +30,10 @@ private:
 	void commit();
 
 	// Tasks to be executed
-	std::vector<std::shared_ptr<ITask>> tasks;
+	std::vector<std::shared_ptr<ITask>> m_tasks;
 
-	bool is_committed;
+	bool m_is_committed;
 
 	// Tasks which were executed, in case of a failure and a need to rollback
-	std::stack<std::shared_ptr<ITask>> history;
+	std::stack<std::shared_ptr<ITask>> m_history;
 };

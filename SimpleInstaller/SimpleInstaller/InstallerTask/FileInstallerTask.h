@@ -37,7 +37,7 @@ private:
 	// In case the file already existed before the installation, this method will recover its data
 	void recover_previous_file(const std::wstring& new_file_path) const;
 
-	std::wstring source_file_path;
-	std::wstring target_directory_path;
-	PreviousData previous_data;
+	std::wstring m_source_file_path;
+	std::wstring m_target_directory_path;
+	PreviousData m_previous_data;
 };

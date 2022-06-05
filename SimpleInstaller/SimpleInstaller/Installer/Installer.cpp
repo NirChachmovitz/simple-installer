@@ -4,21 +4,21 @@
 #include "Environment/win32.h"
 #include "InstallerTask/TaskFactory.h"
 
-Installer::Installer() : is_committed(false)
+Installer::Installer() : m_is_committed(false)
 {}
 
 
 void Installer::commit()
 {
-	is_committed = true;
+	m_is_committed = true;
 }
 
 
 void Installer::install()
 {
 	// If thrown, main will destruct Installer
-	for (const auto& task : tasks) {
-		history.push(task);
+	for (const auto& task : m_tasks) {
+		m_history.push(task);
 
 		LOG(INFO) << "Executing task";
 		task->execute();
@@ -32,11 +32,11 @@ void Installer::install()
 
 void Installer::rollback()
 {
-	if (!is_committed) {
-		while (!history.empty()) {
+	if (!m_is_committed) {
+		while (!m_history.empty()) {
 			try {
-				const auto current_task = history.top();
-				history.pop(); // TODO: think. is this throwing? or anything else here.
+				const auto current_task = m_history.top();
+				m_history.pop(); // TODO: think. is this throwing? or anything else here.
 
 				LOG(INFO) << "Rolling back task";
 				current_task->rollback();
@@ -56,5 +56,5 @@ Installer::~Installer()
 
 void from_json(const nlohmann::json& j, Installer& installer)
 {
-	installer.tasks = j.at("tasks").get<std::vector<std::shared_ptr<ITask>>>();
+	installer.m_tasks = j.at("tasks").get<std::vector<std::shared_ptr<ITask>>>();
 }

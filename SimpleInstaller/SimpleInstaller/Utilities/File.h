@@ -48,6 +48,6 @@ public:
 
 	DEFAULT_CLASS_METHODS(File);
 private:
-	std::wstring file_path;
-	HANDLE file_handle;
+	std::wstring m_file_path;
+	HANDLE m_file_handle;
 };
