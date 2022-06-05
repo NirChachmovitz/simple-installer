@@ -135,6 +135,14 @@ std::vector<unsigned char> win32::query_registry_value(HKEY key, const std::wstr
 }
 
 
+void win32::flush_registry_key(HKEY key)
+{
+	if (ERROR_SUCCESS!= RegFlushKey(key)) {
+		throw RegFlushKeyException("flush_registry_key failed, last error is: " + GetLastError());
+	}
+}
+
+
 void win32::set_registry_string_value(HKEY key, const std::wstring& value_name, const std::wstring& value)
 {
 	// TODO: change this

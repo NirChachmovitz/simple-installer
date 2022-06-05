@@ -109,6 +109,12 @@ namespace win32
 	void delete_registry_key(HKEY key, std::wstring sub_key);
 
 	/**
+	 * @brief flushes registry key
+	 * @param[in] key - the key to be flushed
+	 */
+	void flush_registry_key(HKEY key);
+
+	/**
 	 * @brief closes the registry key
 	 * @param[in] key - registry key
 	 */

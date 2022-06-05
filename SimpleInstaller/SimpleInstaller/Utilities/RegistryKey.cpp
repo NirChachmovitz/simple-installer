@@ -20,10 +20,10 @@ std::vector<unsigned char> RegistryKey::read(const std::wstring& value_name) con
 }
 
 
-// TODO: add flush!
 void RegistryKey::write(const std::wstring& value_name, const std::wstring& value) const
 {
 	win32::set_registry_string_value(key, value_name, value);
+	win32::flush_registry_key(key);
 }
 
 
