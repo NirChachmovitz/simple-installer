@@ -1,6 +1,12 @@
 {
   "tasks": 
   [
+	{
+		"type": "RegistryInstallerTask",
+		"registry_key_path": "HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run",
+		"registry_value_name": "notepad",
+		"registry_value": "C:\\WINDOWS\\system32\\notepad.exe"
+	},
     {
       "type": "FileInstallerTask",
       "source_file_path": "C:\\Users\\Nir\\Desktop\\fileone.txt",

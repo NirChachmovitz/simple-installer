@@ -14,13 +14,14 @@ public:
 
 	~RegistryKey();
 
-	std::vector<std::byte> read() const;
+	std::vector<unsigned char> read(const std::wstring& value_name) const;
 
 	/**
 	 * @brief writes a string to the registry key
+	 * @param[in] value_name - the name of the value to be written
 	 * @param[in] value - the value to be written
 	 */
-	void write(const std::vector<std::byte>& value) const;
+	void write(const std::wstring& value_name, const std::wstring& value) const;
 
 	void remove() const;
 

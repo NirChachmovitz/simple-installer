@@ -1,5 +1,6 @@
 #include "win32.h"
 
+#include <algorithm>
 #include <memory>
 #include <Shlwapi.h>
 
@@ -123,25 +124,21 @@ void win32::close_registry_key(HKEY key)
 }
 
 
-std::vector<std::byte> win32::query_registry_value(HKEY key)
+std::vector<unsigned char> win32::query_registry_value(HKEY key, const std::wstring& value_name)
 {
-	UNREFERENCED_PARAMETER(key);
-	return {};
-/*	std::vector<unsigned char> data(TOTAL_BYTES_TO_READ_FROM_REGISTRY);
+	std::vector<unsigned char> data(TOTAL_BYTES_TO_READ_FROM_REGISTRY);
 	DWORD data_size = TOTAL_BYTES_TO_READ_FROM_REGISTRY;
-	if (ERROR_SUCCESS != RegQueryValueExW(key, nullptr, nullptr, nullptr, data.data(), &data_size)) {
+	if (ERROR_SUCCESS != RegQueryValueExW(key, value_name.data(), nullptr, nullptr, data.data(), &data_size)) {
 		throw RegQueryKeyException("query_registry_value failed, last error is: " + GetLastError());
 	}
-	return std::vector<std::byte>(data.begin(), data.end());*/
+	return data;
 }
 
 
-void win32::set_registry_string_value(HKEY key, std::vector<std::byte> value)
+void win32::set_registry_string_value(HKEY key, const std::wstring& value_name, const std::wstring& value)
 {
-	UNREFERENCED_PARAMETER(key);
-	UNREFERENCED_PARAMETER(value);
-	/*std::vector<unsigned char> byte_value(value.begin(), value.end());
-	if (ERROR_SUCCESS != RegSetValueExW(key, nullptr, 0, REG_SZ, byte_value.data(), value.size())) {
+	// TODO: change this
+	if (ERROR_SUCCESS != RegSetValueExW(key, value_name.data(), 0, REG_SZ, reinterpret_cast<const BYTE*>(value.c_str()), value.size() * 2 + 1)) {
 		throw RegSetValueException("set_registry_string_value failed, last error is: " + GetLastError());
-	}*/
+	}
 }

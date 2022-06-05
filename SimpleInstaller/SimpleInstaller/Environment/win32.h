@@ -81,15 +81,17 @@ namespace win32
 	/**
 	 * @brief queries the registry value
 	 * @param[in] key - the key to be queried
+	 * @param[in] value_name - the value name to be queried
 	 */
-	std::vector<std::byte> query_registry_value(HKEY key);
+	std::vector<unsigned char> query_registry_value(HKEY key, const std::wstring& value_name);
 
 	/**
 	 * @brief sets a string value to a given key
 	 * @param[in] key - the key of the registry
+	 * @param[in] value_name - the name of the value of the key
 	 * @param[in] value - the value to be written
 	 */
-	void set_registry_string_value(HKEY key, std::vector<std::byte> value);
+	void set_registry_string_value(HKEY key, const std::wstring& value_name, const std::wstring& value);
 
 	/**
 	 * @brief checks if a registry key exists

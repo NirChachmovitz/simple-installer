@@ -14,15 +14,16 @@ RegistryKey::~RegistryKey()
 }
 
 
-std::vector<std::byte> RegistryKey::read() const
+std::vector<unsigned char> RegistryKey::read(const std::wstring& value_name) const
 {
-	return win32::query_registry_value(key);
+	return win32::query_registry_value(key, value_name);
 }
 
 
-void RegistryKey::write(const std::vector<std::byte>& value) const
+// TODO: add flush!
+void RegistryKey::write(const std::wstring& value_name, const std::wstring& value) const
 {
-	win32::set_registry_string_value(key, value);
+	win32::set_registry_string_value(key, value_name, value);
 }
 
 

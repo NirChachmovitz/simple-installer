@@ -10,10 +10,10 @@
 
 // A struct to keep the previous data of the file if it exists already.
 // Using it, the rollback will be perfect.
-struct PreviousData
+struct PreviousRegistryData
 {
 	bool did_exist;
-	std::vector<std::byte> data;
+	std::wstring data;
 };
 
 /**
@@ -23,7 +23,7 @@ struct PreviousData
 class RegistryInstallerTask : public ITask
 {
 public:
-	RegistryInstallerTask(const std::wstring& registry_key_path, const std::wstring& registry_value);
+	RegistryInstallerTask(const std::wstring& registry_key_path, const std::wstring& registry_value_name, const std::wstring& registry_value);
 
 	// Executing of the installation: Copying the value to a registry key.
 	void execute() override;
@@ -39,6 +39,7 @@ private:
 	void recover_previous_registry_value(HKEY main_key, const std::wstring& sub_key) const;
 
 	std::wstring registry_key_path;
+	std::wstring registry_value_name;
 	std::wstring registry_value;
-	PreviousData previous_data;
+	PreviousRegistryData previous_data;
 };
