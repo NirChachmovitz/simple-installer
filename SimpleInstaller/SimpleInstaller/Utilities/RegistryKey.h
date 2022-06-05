@@ -14,7 +14,7 @@ public:
 
 	~RegistryKey();
 
-	std::vector<unsigned char> read(const std::wstring& value_name) const;
+	std::wstring read(const std::wstring& value_name) const;
 
 	/**
 	 * @brief writes a string to the registry key

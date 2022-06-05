@@ -83,7 +83,7 @@ namespace win32
 	 * @param[in] key - the key to be queried
 	 * @param[in] value_name - the value name to be queried
 	 */
-	std::vector<unsigned char> query_registry_value(HKEY key, const std::wstring& value_name);
+	std::wstring query_registry_value(HKEY key, const std::wstring& value_name);
 
 	/**
 	 * @brief sets a string value to a given key

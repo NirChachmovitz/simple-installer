@@ -14,7 +14,7 @@ RegistryKey::~RegistryKey()
 }
 
 
-std::vector<unsigned char> RegistryKey::read(const std::wstring& value_name) const
+std::wstring RegistryKey::read(const std::wstring& value_name) const
 {
 	return win32::query_registry_value(key, value_name);
 }

@@ -45,9 +45,9 @@ void RegistryInstallerTask::execute()
 	RegistryKey registry_key(main_key, sub_key, REG_OPTION_NON_VOLATILE);
 
 	// TODO: not working
-	/*if (previous_data.did_exist) {
+	if (previous_data.did_exist) {
 		previous_data.data = registry_key.read(registry_value_name);
-	}*/
+	}
 
 	// TODO: change it
 	registry_key.write(registry_value_name, registry_value);

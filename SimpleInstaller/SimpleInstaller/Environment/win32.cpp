@@ -124,11 +124,11 @@ void win32::close_registry_key(HKEY key)
 }
 
 
-std::vector<unsigned char> win32::query_registry_value(HKEY key, const std::wstring& value_name)
+std::wstring win32::query_registry_value(HKEY key, const std::wstring& value_name)
 {
-	std::vector<unsigned char> data(TOTAL_BYTES_TO_READ_FROM_REGISTRY);
+	std::wstring data(TOTAL_BYTES_TO_READ_FROM_REGISTRY, '\0');
 	DWORD data_size = TOTAL_BYTES_TO_READ_FROM_REGISTRY;
-	if (ERROR_SUCCESS != RegQueryValueExW(key, value_name.data(), nullptr, nullptr, data.data(), &data_size)) {
+	if (ERROR_SUCCESS != RegQueryValueExW(key, value_name.data(), nullptr, nullptr, reinterpret_cast<LPBYTE>(data.data()), &data_size)) {
 		throw RegQueryKeyException("query_registry_value failed, last error is: " + GetLastError());
 	}
 	return data;
