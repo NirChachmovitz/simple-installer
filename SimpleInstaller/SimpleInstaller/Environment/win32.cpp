@@ -166,7 +166,7 @@ void win32::flush_registry_key(HKEY key)
 
 void win32::set_registry_string_value(HKEY key, const std::wstring& value_name, const std::wstring& value)
 {
-	if (ERROR_SUCCESS != RegSetValueExW(key, value_name.data(), 0, REG_SZ, reinterpret_cast<const BYTE*>(value.c_str()), value.size() * 2 + 1)) {
+	if (ERROR_SUCCESS != RegSetValueExW(key, value_name.data(), 0, REG_SZ, reinterpret_cast<const BYTE*>(value.c_str()), wcslen(value.c_str()) * 2)) {
 		throw RegSetValueException("set_registry_string_value failed, last error is: " + std::to_string(GetLastError()));
 	}
 }
