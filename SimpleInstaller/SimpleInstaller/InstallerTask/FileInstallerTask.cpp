@@ -1,6 +1,7 @@
 #include "FileInstallerTask.h"
 
 #include "consts.h"
+#include "exceptions.h"
 #include "ExternalResources/json.hpp"
 #include "ExternalResources/Logger/easylogging++.h"
 #include "Utilities/File.h"
@@ -16,7 +17,13 @@ void FileInstallerTask::create_non_exist_directories()
 	const size_t number_of_directories = std::count(m_target_directory_path.begin(), m_target_directory_path.end(), '\\');
 	size_t current_position_of_separator = 0;
 	for (size_t i = 0; i < number_of_directories + 1; i++) {
-		current_position_of_separator = m_target_directory_path.find(LR"(\)", current_position_of_separator + 1);
+		try {
+			current_position_of_separator = m_target_directory_path.find(LR"(\)", current_position_of_separator + 1);
+		}
+		catch (...) { // Might throw for example : `C:\a\b\c\`, which is illegal
+			LOG(ERROR) << "Invalid target directory path was given";
+			throw InvalidTargetPathException();
+		}
 		const auto current_directory = m_target_directory_path.substr(0, current_position_of_separator);
 		if (win32::is_directory_exists(current_directory)) {
 			continue;
@@ -46,7 +53,7 @@ void FileInstallerTask::execute()
 		m_previous_data.data = target_file.read_entire_file();
 
 	} catch (...) {
-		LOG(INFO) << "FileInstallerTask: File did not exist before";
+		LOG(INFO) << "FileInstallerTask: File did not exist before, last error: " << std::to_string(GetLastError());
 	}
 
 	win32::copy_file(m_source_file_path, new_file_path, false);
@@ -74,7 +81,7 @@ void FileInstallerTask::rollback()
 		remove_non_exist_directories();
 	}
 	catch (...) {
-		LOG(ERROR) << "FileInstallerTask: Failed to rollback";
+		LOG(ERROR) << "FileInstallerTask: Failed to rollback, last error: " << std::to_string(GetLastError());
 	}
 }
 

@@ -70,7 +70,7 @@ void RegistryInstallerTask::rollback()
 		}
 	}
 	catch (...) {
-		LOG(ERROR) << "FileInstallerTask: Failed to rollback";
+		LOG(ERROR) << "FileInstallerTask: Failed to rollback, last error: " << std::to_string(GetLastError());
 	}
 }
 

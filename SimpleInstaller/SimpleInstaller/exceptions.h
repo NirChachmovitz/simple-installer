@@ -39,5 +39,6 @@ DEFINE_EXCEPTION(RegFlushKeyException, RegistryException);
 
 // JSON Exceptions
 DEFINE_EXCEPTION(JsonException, WindowsInstallerException)
+DEFINE_EXCEPTION(InvalidTargetPathException, JsonException)
 DEFINE_EXCEPTION(ParseConfigurationException, JsonException)
 DEFINE_EXCEPTION(UnknownTaskException, ParseConfigurationException)

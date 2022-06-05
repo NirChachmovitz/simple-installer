@@ -48,7 +48,7 @@ int wmain(int argc, wchar_t* argv[], wchar_t* envp[])
 		return FILE_IO_FAILURE;
 	}
 	catch (...) {
-		LOG(FATAL) << "Failed running for unknown reason";
+		LOG(FATAL) << "Failed running for unknown reason, last error: " << std::to_string(GetLastError());
 		return UNKNOWN_FAILURE_OCCURRED;
 	}
 

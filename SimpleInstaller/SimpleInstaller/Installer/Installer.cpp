@@ -43,7 +43,7 @@ void Installer::rollback()
 				LOG(INFO) << "Rolled back task successfully";
 			}
 			catch (...) {
-				LOG(INFO) << "Couldn't rollback current task";
+				LOG(INFO) << "Couldn't rollback current task, last error: " << std::to_string(GetLastError());
 			}
 		}
 	}
