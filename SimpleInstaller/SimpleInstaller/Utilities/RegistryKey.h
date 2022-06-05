@@ -26,5 +26,5 @@ public:
 	void remove() const;
 
 private:
-	HKEY key;
+	HKEY m_key;
 };

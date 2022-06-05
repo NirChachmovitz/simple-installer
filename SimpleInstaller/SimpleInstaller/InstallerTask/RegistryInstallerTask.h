@@ -3,7 +3,6 @@
 
 #include <Windows.h>
 #include <string>
-#include <vector>
 #include <memory>
 #include "Configuration/json.hpp"
 #include "ITask.h"
@@ -38,8 +37,8 @@ private:
 	// In case the registry key already existed before the installation, this method will recover its data
 	void recover_previous_registry_value(HKEY main_key, const std::wstring& sub_key) const;
 
-	std::wstring registry_key_path;
-	std::wstring registry_value_name;
-	std::wstring registry_value;
-	PreviousRegistryData previous_data;
+	std::wstring m_registry_key_path;
+	std::wstring m_registry_value_name;
+	std::wstring m_registry_value;
+	PreviousRegistryData m_previous_data;
 };
