@@ -1,10 +1,12 @@
-# Simple Windows Installer
+# Simple Installer
 
-Simple Windows Installer is a C++ product that mimics the action of the Windows Installer,
+Simple Installer is a C++ product that mimics the action of the Windows Installer,
 and supports several transacted operations, such as:
 
 - Copying existing files (all formats are supported) to a target directory
 - Editing and creating registry keys 
+
+The installer is intended to run on Windows platforms, although the transition to a Linux environment requires not too much.
 
 A logger is also included to log each action made.
 
@@ -47,11 +49,11 @@ Therefore, the configuration file should be as following:
       "target_directory_path": "C:\\conf"
     },
 	{
-		"type": "RegistryInstallerTask",
-		"registry_key_path": "HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run",
-		"registry_value_name": "innocent",
-		"registry_value": "C:\\tmp\\innocent.exe"
-	},
+	  "type": "RegistryInstallerTask",
+	  "registry_key_path": "HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run",
+	  "registry_value_name": "innocent",
+	  "registry_value": "C:\\tmp\\innocent.exe"
+	}
   ]
 }
 ```
