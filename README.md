@@ -66,4 +66,4 @@ Therefore, the configuration file should be as following:
 	- In case of a rollback, all will be returned to previous state (either the previous data, or the file will be deleted if didn't exist)
 	- Installer class contains a stack of all the operations made in the order they made, so the rollback is assured to be safe
 	- Same goes for tree of directories which did not exist
-- Finish :)
+- Finish! :)
